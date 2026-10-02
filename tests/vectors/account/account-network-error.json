@@ -1,0 +1,59 @@
+{
+  "name": "account-network-error",
+  "description": "No account body ever received; the last attempt failed with no HTTP response (DNS): all four groups fault network_error carrying the platform message.",
+  "input": {
+    "instant": "2026-10-01T02:30:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": { "fetchedAt": null, "error": { "kind": "network", "message": "getaddrinfo ENOTFOUND mcp-api.flipped.energy" }, "body": null },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": { "fetchedAt": null, "error": null, "body": null },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": {
+      "status": "faulted",
+      "fault": { "code": "network_error", "message": "getaddrinfo ENOTFOUND mcp-api.flipped.energy" },
+      "accountNumber": null,
+      "accountState": null,
+      "productName": null,
+      "region": null,
+      "timeZone": null,
+      "tokenExpiresAt": null,
+      "tokenScope": null,
+      "tokenExpiringSoon": null
+    },
+    "tariff": {
+      "status": "faulted",
+      "fault": { "code": "network_error", "message": "getaddrinfo ENOTFOUND mcp-api.flipped.energy" },
+      "structure": null,
+      "spotLinked": null,
+      "peak": null,
+      "offPeak": null,
+      "period": null,
+      "nextChange": null,
+      "schedule": null
+    },
+    "price": {
+      "status": "faulted",
+      "fault": { "code": "network_error", "message": "getaddrinfo ENOTFOUND mcp-api.flipped.energy" },
+      "centsPerKwh": null,
+      "intervalStart": null,
+      "tier": null,
+      "priceHigh": null,
+      "priceLow": null,
+      "negative": null,
+      "forecast": null
+    },
+    "energy": {
+      "status": "faulted",
+      "fault": { "code": "network_error", "message": "getaddrinfo ENOTFOUND mcp-api.flipped.energy" },
+      "nmi": null,
+      "intervals": null,
+      "days": null,
+      "latestIntervalEnd": null
+    },
+    "nextEvaluation": null
+  }
+}

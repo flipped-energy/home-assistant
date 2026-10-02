@@ -1,0 +1,42 @@
+[
+  {
+    "path": "account-sync-failure-retried-at-usage-sync.json",
+    "sha256": "8603020ee05bd3b3d76e3f766b440370c6cd7fc1fb00b56c9fadfbd25512dfab"
+  },
+  {
+    "path": "evaluation-timer-30h.json",
+    "sha256": "d26f58aeb6e74628c6d850690b0ec3e85c570e18a26af05183149500f0cef1af"
+  },
+  {
+    "path": "feed-503-hour.json",
+    "sha256": "e7434eeeeec99357771368fbabaac64a03c51bff2e0feb15884de93440170146"
+  },
+  {
+    "path": "first-run-account-pinning.json",
+    "sha256": "198fe3f540f77334eaf9ffdc748fd31ab2c06e9e028ef1d097c69f6f34490e6e"
+  },
+  {
+    "path": "late-price-hour.json",
+    "sha256": "9127ba41d4c1e0ede2e9ae5c81af5e0cf0dd2596a408d754a4ce0c3faecfa76b"
+  },
+  {
+    "path": "long-plan-timer-cap.json",
+    "sha256": "e08cedf5c073e4b929e24f104f3e878ecb4de5c629cef29a1eee1d270c50f152"
+  },
+  {
+    "path": "non-gateway-401-account-sync.json",
+    "sha256": "33af4653b39b2508e4073ea27ba5d80effc984cbfcb43a47e949b75c111eda4e"
+  },
+  {
+    "path": "outlook-failure-after-release.json",
+    "sha256": "32bec85ceef433d3e68d0cddcd6dca3b24d3a6cf29bb2df999fee360ddc25aaf"
+  },
+  {
+    "path": "price-loop-basics.json",
+    "sha256": "9c81a7958903b137ac1542cfa2f11d0a054307eeacb8ebc9f4c98c75fb032045"
+  },
+  {
+    "path": "redirect-not-followed.json",
+    "sha256": "2a9e55b072b6965751eeddfce04ab1e0483c81198586d85c728b8ada28081401"
+  }
+]

@@ -1,0 +1,21 @@
+get_wholesale_price_forecast:
+  fields:
+    config_entry_id:
+      required: true
+      selector:
+        config_entry:
+          integration: flipped_energy
+get_rate_schedule:
+  fields:
+    config_entry_id:
+      required: true
+      selector:
+        config_entry:
+          integration: flipped_energy
+get_usage_history:
+  fields:
+    config_entry_id:
+      required: true
+      selector:
+        config_entry:
+          integration: flipped_energy

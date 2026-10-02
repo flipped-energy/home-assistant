@@ -1,0 +1,139 @@
+{
+  "name": "billing-unit-overlap-weekday-weekend",
+  "description": "Plan M (Off Peak, Peak and an all-day Weekend unit; days of week are hidden by the API), Sydney, 12:30 local: at minute 0 Off Peak and Weekend both price kWh 0 onward, so billing_unit_overlap; never summed.",
+  "input": {
+    "instant": "2026-10-01T02:30:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": {
+      "fetchedAt": "2026-09-30T14:01:00Z",
+      "error": null,
+      "body": {
+        "accounts": [
+          {
+            "accountNumber": "36200000000001",
+            "siteAddress": "1 Example St, Sampletown NSW 2000",
+            "accountState": "ACTIVE",
+            "productName": "Weekday Weekend",
+            "product": {
+              "gridType": "Ausgrid",
+              "timeZone": "Australia/Sydney",
+              "hasUpcomingPlanChange": false,
+              "upcomingPlan": null,
+              "upcomingPlanEffectiveDate": "2027-07-01T00:00:00",
+              "currentPlan": {
+                "planId": "00000000-0000-4000-8000-000000000013",
+                "code": "EXAMPLE-WEEKDAY-WEEKEND",
+                "start": "2026-07-01T00:00:00",
+                "end": "2027-06-30T00:00:00",
+                "billingUnits": [
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-000000001301",
+                    "name": "Off Peak",
+                    "billingUnitType": "FixedBillingUnit",
+                    "chargePerKwh": 0.2,
+                    "chargePerKwhIncludingGst": 0.22,
+                    "timeOfDayStartMinutes": 1260,
+                    "timeOfDayEndMinutes": 900,
+                    "kwhStart": 0,
+                    "kwhEnd": 0,
+                    "capPerKwhIncludingGst": null
+                  },
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-000000001302",
+                    "name": "Peak",
+                    "billingUnitType": "FixedBillingUnit",
+                    "chargePerKwh": 0.5,
+                    "chargePerKwhIncludingGst": 0.55,
+                    "timeOfDayStartMinutes": 900,
+                    "timeOfDayEndMinutes": 1260,
+                    "kwhStart": 0,
+                    "kwhEnd": 0,
+                    "capPerKwhIncludingGst": null
+                  },
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-000000001303",
+                    "name": "Weekend",
+                    "billingUnitType": "FixedBillingUnit",
+                    "chargePerKwh": 0.227273,
+                    "chargePerKwhIncludingGst": 0.25,
+                    "timeOfDayStartMinutes": 780,
+                    "timeOfDayEndMinutes": 780,
+                    "kwhStart": 0,
+                    "kwhEnd": 0,
+                    "capPerKwhIncludingGst": null
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": {
+      "fetchedAt": "2026-10-01T02:25:40Z",
+      "error": null,
+      "body": {
+        "region": "NSW1",
+        "now": { "time": "2026-10-01T12:25:00+10:00", "region": "NSW1", "averageCentsPerKwh": -3.2, "minCentsPerKwh": -3.2, "maxCentsPerKwh": -3.2, "intervals": 1 },
+        "nowAssessment": { "tier": "Normal", "centsPerKwh": -3.2, "aboveHighFenceCentsPerKwh": 0, "multipleOfMedian": -0.4 },
+        "nextHour": null,
+        "nextHourPeak": null,
+        "ahead": null,
+        "aheadPeak": null,
+        "baseline": {
+          "from": "2026-09-24T12:27:00+10:00",
+          "to": "2026-10-01T12:27:00+10:00",
+          "intervals": 2016,
+          "medianCentsPerKwh": 8.1,
+          "lowerQuartileCentsPerKwh": -4,
+          "upperQuartileCentsPerKwh": 10,
+          "lowFenceCentsPerKwh": -25,
+          "highFenceCentsPerKwh": 31,
+          "extremeFenceCentsPerKwh": 52
+        }
+      }
+    },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": {
+      "status": "ok",
+      "fault": null,
+      "accountNumber": "36200000000001",
+      "accountState": "ACTIVE",
+      "productName": "Weekday Weekend",
+      "region": "Ausgrid",
+      "timeZone": "Australia/Sydney",
+      "tokenExpiresAt": null,
+      "tokenScope": null,
+      "tokenExpiringSoon": null
+    },
+    "tariff": {
+      "status": "faulted",
+      "fault": { "code": "billing_unit_overlap", "message": "minute 0, units 00000000-0000-4000-8000-000000001301 and 00000000-0000-4000-8000-000000001303" },
+      "structure": null,
+      "spotLinked": null,
+      "peak": null,
+      "offPeak": null,
+      "period": null,
+      "nextChange": null,
+      "schedule": null
+    },
+    "price": {
+      "status": "ok",
+      "fault": null,
+      "centsPerKwh": -3.2,
+      "intervalStart": "2026-10-01T02:25:00Z",
+      "tier": "Normal",
+      "priceHigh": false,
+      "priceLow": true,
+      "negative": true,
+      "forecast": { "nextHour": null, "ahead": null }
+    },
+    "energy": { "status": "faulted", "fault": { "code": "not_loaded" }, "nmi": null, "intervals": null, "days": null, "latestIntervalEnd": null },
+    "nextEvaluation": "2026-10-01T02:40:00Z"
+  }
+}

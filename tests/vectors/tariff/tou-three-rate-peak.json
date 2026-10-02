@@ -1,0 +1,69 @@
+{
+  "name": "tou-three-rate-peak",
+  "description": "Three-rate time of use, Sydney, 17:00 local: inside the Peak window.",
+  "input": {
+    "instant": "2026-10-01T07:00:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": {
+      "fetchedAt": "2026-09-30T14:01:00Z",
+      "error": null,
+      "body": {
+        "accounts": [
+          {
+            "accountNumber": "36200000000001",
+            "siteAddress": "1 Example St, Sampletown NSW 2000",
+            "accountState": "ACTIVE",
+            "productName": "Three Rate",
+            "product": {
+              "gridType": "Ausgrid",
+              "timeZone": "Australia/Sydney",
+              "hasUpcomingPlanChange": false,
+              "upcomingPlan": null,
+              "upcomingPlanEffectiveDate": "2027-07-01T00:00:00",
+              "currentPlan": {
+                "planId": "00000000-0000-4000-8000-000000000005",
+                "code": "EXAMPLE-THREE-RATE",
+                "start": "2026-07-01T00:00:00",
+                "end": "2027-06-30T00:00:00",
+                "billingUnits": [
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000501", "name": "Off Peak", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0.18, "chargePerKwhIncludingGst": 0.198, "timeOfDayStartMinutes": 1320, "timeOfDayEndMinutes": 420, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null },
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000502", "name": "Peak", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0.55, "chargePerKwhIncludingGst": 0.605, "timeOfDayStartMinutes": 900, "timeOfDayEndMinutes": 1260, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null },
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000503", "name": "Shoulder Day", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0.28, "chargePerKwhIncludingGst": 0.308, "timeOfDayStartMinutes": 420, "timeOfDayEndMinutes": 900, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null },
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000504", "name": "Shoulder Evening", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0.28, "chargePerKwhIncludingGst": 0.308, "timeOfDayStartMinutes": 1260, "timeOfDayEndMinutes": 1320, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": { "fetchedAt": null, "error": null, "body": null },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": { "status": "ok", "fault": null, "accountNumber": "36200000000001", "accountState": "ACTIVE", "productName": "Three Rate", "region": "Ausgrid", "timeZone": "Australia/Sydney", "tokenExpiresAt": null, "tokenScope": null, "tokenExpiringSoon": null },
+    "tariff": {
+      "status": "ok",
+      "fault": null,
+      "structure": "timeOfUse",
+      "spotLinked": false,
+      "peak": true,
+      "offPeak": false,
+      "period": { "band": "peak", "name": "Peak", "rateCentsPerKwh": 60.5, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 60.5 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null, "start": "2026-10-01T05:00:00Z", "end": "2026-10-01T11:00:00Z" },
+      "nextChange": "2026-10-01T11:00:00Z",
+      "schedule": [
+        { "startMinute": 0, "endMinute": 420, "band": "offPeak", "name": "Off Peak", "rateCentsPerKwh": 19.8, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 19.8 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null },
+        { "startMinute": 420, "endMinute": 900, "band": "shoulder", "name": "Shoulder Day", "rateCentsPerKwh": 30.8, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 30.8 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null },
+        { "startMinute": 900, "endMinute": 1260, "band": "peak", "name": "Peak", "rateCentsPerKwh": 60.5, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 60.5 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null },
+        { "startMinute": 1260, "endMinute": 1320, "band": "shoulder", "name": "Shoulder Evening", "rateCentsPerKwh": 30.8, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 30.8 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null },
+        { "startMinute": 1320, "endMinute": 1440, "band": "offPeak", "name": "Off Peak", "rateCentsPerKwh": 19.8, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 19.8 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null }
+      ]
+    },
+    "price": { "status": "faulted", "fault": { "code": "not_loaded" }, "centsPerKwh": null, "intervalStart": null, "tier": null, "priceHigh": null, "priceLow": null, "negative": null, "forecast": null },
+    "energy": { "status": "faulted", "fault": { "code": "not_loaded" }, "nmi": null, "intervals": null, "days": null, "latestIntervalEnd": null },
+    "nextEvaluation": "2026-10-01T11:00:00Z"
+  }
+}

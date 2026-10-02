@@ -1,0 +1,59 @@
+{
+  "name": "price-loop-basics",
+  "description": "Pinned account, flat plan, Sydney. A release then the outlook; three 204s in one interval, then no E3 until the next boundary; 200 with an empty array (wait_no_progress, T advances by 300 s, the hold continues at once); a network failure during a hold (next E3 at the next boundary); 429 with Retry-After 17 (the same E3 once, 17 s later); 401 with the gateway body stops every request. The price faults with the network error at its 900 s age-out and ends faulted with the 401 body.",
+  "start": "2026-10-01T02:21:10Z",
+  "end": "2026-10-01T02:52:30Z",
+  "restarts": [],
+  "config": {"token":"fdk_SEQUENCEFIXTURE000000000000000000wXyZ","accountNumber":"36200000000001","nmi":null,"priceHighThresholdCentsPerKwh":null,"priceLowThresholdCentsPerKwh":null},
+  "responses": [
+    {"method":"GET","path":"/api/MyAccount/GetAccountData","query":{},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":{"accounts":[{"accountNumber":"36200000000001","siteAddress":"1 Example St, Sampletown NSW 2000","accountState":"ACTIVE","productName":"Anytime Flat","product":{"gridType":"Ausgrid","timeZone":"Australia/Sydney","hasUpcomingPlanChange":false,"upcomingPlan":null,"upcomingPlanEffectiveDate":"2027-07-01T00:00:00","currentPlan":{"planId":"00000000-0000-4000-8000-000000000101","code":"EXAMPLE-ANYTIME","start":"2026-07-01T00:00:00","end":"2027-06-30T00:00:00","billingUnits":[{"billingUnitId":"00000000-0000-4000-8000-0000000001a1","name":"Anytime Rate","billingUnitType":"FixedBillingUnit","chargePerKwh":0.2927,"chargePerKwhIncludingGst":0.32197,"timeOfDayStartMinutes":780,"timeOfDayEndMinutes":780,"kwhStart":0,"kwhEnd":0,"capPerKwhIncludingGst":null},{"billingUnitId":"00000000-0000-4000-8000-0000000001a2","name":"Supply Charge","billingUnitType":"PeriodicBillingUnit","periodicCharge":1.1,"periodicChargeIncludingGst":1.21,"period":"Daily","chargePerKwh":null,"chargePerKwhIncludingGst":null,"timeOfDayStartMinutes":null,"timeOfDayEndMinutes":null,"kwhStart":null,"kwhEnd":null,"capPerKwhIncludingGst":null}]}}}]}}},
+    {"method":"GET","path":"/api/Billing/meters","query":{},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":{"meters":[{"nmi":"4102000000","address":"1 Example St, Sampletown NSW 2000"}]}}},
+    {"method":"GET","path":"/tokens","query":{},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":{"tokens":[]}}},
+    {"method":"GET","path":"/api/Live/nempricing/outlook","query":{"region":"Ausgrid"},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":{"region":"NSW1","now":{"time":"2026-10-01T12:20:00+10:00","region":"NSW1","averageCentsPerKwh":9.6,"minCentsPerKwh":9.6,"maxCentsPerKwh":9.6,"intervals":1},"nowAssessment":{"tier":"Normal","centsPerKwh":9.6,"aboveHighFenceCentsPerKwh":0,"multipleOfMedian":1.1},"nextHour":null,"nextHourPeak":null,"ahead":null,"aheadPeak":null,"baseline":{"from":"2026-09-24T12:20:00+10:00","to":"2026-10-01T12:20:00+10:00","intervals":2016,"medianCentsPerKwh":8.1,"lowerQuartileCentsPerKwh":-4,"upperQuartileCentsPerKwh":10,"lowFenceCentsPerKwh":-25,"highFenceCentsPerKwh":31,"extremeFenceCentsPerKwh":52}}}},
+    {"method":"GET","path":"/api/Usage/usage/projectreads/halfhourly","query":{"start":"2026-09-24T00:00:00","end":"2026-10-02T00:00:00","nmi":"4102000000"},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":[]}},
+    {"method":"GET","path":"/api/Usage/usage/projectreads/daily","query":{"start":"2026-09-24T00:00:00","end":"2026-10-02T00:00:00","nmi":"4102000000"},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":[]}},
+    {"method":"GET","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:20:00","timeoutSeconds":"55"},"holdSeconds":25,"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":[{"time":"2026-10-01T12:25:00+10:00","region":"NSW1","averageCentsPerKwh":9.1,"minCentsPerKwh":9.1,"maxCentsPerKwh":9.1,"intervals":1}]}},
+    {"method":"GET","path":"/api/Live/nempricing/outlook","query":{"region":"Ausgrid"},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":{"region":"NSW1","now":{"time":"2026-10-01T12:25:00+10:00","region":"NSW1","averageCentsPerKwh":9.1,"minCentsPerKwh":9.1,"maxCentsPerKwh":9.1,"intervals":1},"nowAssessment":{"tier":"Normal","centsPerKwh":9.1,"aboveHighFenceCentsPerKwh":0,"multipleOfMedian":1.1},"nextHour":null,"nextHourPeak":null,"ahead":null,"aheadPeak":null,"baseline":{"from":"2026-09-24T12:25:00+10:00","to":"2026-10-01T12:25:00+10:00","intervals":2016,"medianCentsPerKwh":8.1,"lowerQuartileCentsPerKwh":-4,"upperQuartileCentsPerKwh":10,"lowFenceCentsPerKwh":-25,"highFenceCentsPerKwh":31,"extremeFenceCentsPerKwh":52}}}},
+    {"method":"GET","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:25:00","timeoutSeconds":"55"},"holdSeconds":55,"answer":{"status":204,"headers":{},"body":null}},
+    {"method":"GET","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:25:00","timeoutSeconds":"55"},"holdSeconds":55,"answer":{"status":204,"headers":{},"body":null}},
+    {"method":"GET","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:25:00","timeoutSeconds":"55"},"holdSeconds":55,"answer":{"status":204,"headers":{},"body":null}},
+    {"method":"GET","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:25:00","timeoutSeconds":"55"},"holdSeconds":10,"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":[]}},
+    {"method":"GET","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:30:00","timeoutSeconds":"55"},"holdSeconds":30,"answer":{"network":"socket hang up"}},
+    {"method":"GET","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:30:00","timeoutSeconds":"55"},"holdSeconds":0,"answer":{"status":429,"headers":{"Content-Type":"application/json; charset=utf-8","Retry-After":"17","X-RateLimit-Limit":"60","X-RateLimit-Remaining":"0","X-RateLimit-Reset":"17","X-DailyLimit-Limit":"5000","X-DailyLimit-Remaining":"4870"},"body":"{\"error\":\"rate_limited\",\"message\":\"Over 60 calls this minute.\"}"}},
+    {"method":"GET","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:30:00","timeoutSeconds":"55"},"holdSeconds":0,"answer":{"status":401,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":"{\"error\":\"unauthorized\",\"message\":\"Token is invalid, expired or revoked.\"}"}}
+  ],
+  "expected": {
+    "requests": [
+      {"sendAt":"2026-10-01T02:21:10Z","path":"/api/MyAccount/GetAccountData","query":{}},
+      {"sendAt":"2026-10-01T02:21:10Z","path":"/api/Billing/meters","query":{}},
+      {"sendAt":"2026-10-01T02:21:10Z","path":"/tokens","query":{}},
+      {"sendAt":"2026-10-01T02:21:10Z","path":"/api/Live/nempricing/outlook","query":{"region":"Ausgrid"}},
+      {"sendAt":"2026-10-01T02:21:10Z","path":"/api/Usage/usage/projectreads/halfhourly","query":{"start":"2026-09-24T00:00:00","end":"2026-10-02T00:00:00","nmi":"4102000000"}},
+      {"sendAt":"2026-10-01T02:21:10Z","path":"/api/Usage/usage/projectreads/daily","query":{"start":"2026-09-24T00:00:00","end":"2026-10-02T00:00:00","nmi":"4102000000"}},
+      {"sendAt":"2026-10-01T02:25:00Z","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:20:00","timeoutSeconds":"55"}},
+      {"sendAt":"2026-10-01T02:25:25Z","path":"/api/Live/nempricing/outlook","query":{"region":"Ausgrid"}},
+      {"sendAt":"2026-10-01T02:30:00Z","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:25:00","timeoutSeconds":"55"}},
+      {"sendAt":"2026-10-01T02:30:55Z","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:25:00","timeoutSeconds":"55"}},
+      {"sendAt":"2026-10-01T02:31:50Z","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:25:00","timeoutSeconds":"55"}},
+      {"sendAt":"2026-10-01T02:35:00Z","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:25:00","timeoutSeconds":"55"}},
+      {"sendAt":"2026-10-01T02:35:10Z","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:30:00","timeoutSeconds":"55"}},
+      {"sendAt":"2026-10-01T02:40:00Z","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:30:00","timeoutSeconds":"55"}},
+      {"sendAt":"2026-10-01T02:40:17Z","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T12:30:00","timeoutSeconds":"55"}}
+    ],
+    "timers": [
+      {"armedAt":"2026-10-01T02:21:10Z","timer":"accountSync","target":"2026-10-01T14:01:00Z","delaySeconds":41990},
+      {"armedAt":"2026-10-01T02:21:10Z","timer":"evaluation","target":"2026-10-03T02:21:10Z","delaySeconds":86400},
+      {"armedAt":"2026-10-01T02:21:10Z","timer":"evaluation","target":"2026-10-01T02:35:00Z","delaySeconds":830},
+      {"armedAt":"2026-10-01T02:21:10Z","timer":"price","target":"2026-10-01T02:25:00Z","delaySeconds":230},
+      {"armedAt":"2026-10-01T02:21:10Z","timer":"usageSync","target":"2026-10-02T02:01:00Z","delaySeconds":85190},
+      {"armedAt":"2026-10-01T02:25:25Z","timer":"evaluation","target":"2026-10-01T02:40:00Z","delaySeconds":875},
+      {"armedAt":"2026-10-01T02:25:25Z","timer":"price","target":"2026-10-01T02:30:00Z","delaySeconds":275},
+      {"armedAt":"2026-10-01T02:32:45Z","timer":"price","target":"2026-10-01T02:35:00Z","delaySeconds":135},
+      {"armedAt":"2026-10-01T02:35:40Z","timer":"price","target":"2026-10-01T02:40:00Z","delaySeconds":260},
+      {"armedAt":"2026-10-01T02:40:00Z","timer":"evaluation","target":"2026-10-03T02:21:10Z","delaySeconds":86400},
+      {"armedAt":"2026-10-01T02:40:00Z","timer":"retryAfter","target":"2026-10-01T02:40:17Z","delaySeconds":17}
+    ],
+    "groups": {"account":{"status":"ok","fault":null},"tariff":{"status":"ok","fault":null},"price":{"status":"faulted","fault":{"code":"http_error","httpStatus":401,"body":"{\"error\":\"unauthorized\",\"message\":\"Token is invalid, expired or revoked.\"}","bodyBytes":74}},"energy":{"status":"ok","fault":null}},
+    "storedAccountNumber": "36200000000001"
+  }
+}

@@ -1,0 +1,361 @@
+{
+  "name": "forecast-empty-points",
+  "description": "Plan A, Sydney, 12:30 local; next-hour forecast with no points and year-1 from/to: forecast.nextHour is null and the year-1 values are never parsed; price ok.",
+  "input": {
+    "instant": "2026-10-01T02:30:00Z",
+    "config": {
+      "accountNumber": null,
+      "nmi": null,
+      "tokenPreview": "fdk_Ab12…wXyZ",
+      "priceHighThresholdCentsPerKwh": null,
+      "priceLowThresholdCentsPerKwh": null
+    },
+    "account": {
+      "fetchedAt": "2026-09-30T14:01:00Z",
+      "error": null,
+      "body": {
+        "accounts": [
+          {
+            "accountNumber": "36200000000001",
+            "siteAddress": "1 Example St, Sampletown NSW 2000",
+            "accountState": "ACTIVE",
+            "productName": "Solar Sharer",
+            "product": {
+              "gridType": "Ausgrid",
+              "timeZone": "Australia/Sydney",
+              "hasUpcomingPlanChange": false,
+              "upcomingPlan": null,
+              "upcomingPlanEffectiveDate": "2027-07-01T00:00:00",
+              "currentPlan": {
+                "planId": "00000000-0000-4000-8000-000000000001",
+                "code": "EXAMPLE-SOLAR-SHARER",
+                "start": "2026-07-01T00:00:00",
+                "end": "2027-06-30T00:00:00",
+                "billingUnits": [
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-0000000000a1",
+                    "name": "Day",
+                    "billingUnitType": "FixedBillingUnit",
+                    "chargePerKwh": 0.3,
+                    "chargePerKwhIncludingGst": 0.33,
+                    "timeOfDayStartMinutes": 360,
+                    "timeOfDayEndMinutes": 660,
+                    "kwhStart": 0,
+                    "kwhEnd": 0,
+                    "capPerKwhIncludingGst": null
+                  },
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-0000000000a2",
+                    "name": "Evening",
+                    "billingUnitType": "FixedBillingUnit",
+                    "chargePerKwh": 0.4,
+                    "chargePerKwhIncludingGst": 0.44,
+                    "timeOfDayStartMinutes": 840,
+                    "timeOfDayEndMinutes": 1320,
+                    "kwhStart": 0,
+                    "kwhEnd": 0,
+                    "capPerKwhIncludingGst": null
+                  },
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-0000000000a3",
+                    "name": "Overnight",
+                    "billingUnitType": "FixedBillingUnit",
+                    "chargePerKwh": 0.2,
+                    "chargePerKwhIncludingGst": 0.22,
+                    "timeOfDayStartMinutes": 1320,
+                    "timeOfDayEndMinutes": 360,
+                    "kwhStart": 0,
+                    "kwhEnd": 0,
+                    "capPerKwhIncludingGst": null
+                  },
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-0000000000a4",
+                    "name": "Solar Soak",
+                    "billingUnitType": "FixedBillingUnit",
+                    "chargePerKwh": 0,
+                    "chargePerKwhIncludingGst": 0,
+                    "timeOfDayStartMinutes": 660,
+                    "timeOfDayEndMinutes": 840,
+                    "kwhStart": 0,
+                    "kwhEnd": 24,
+                    "capPerKwhIncludingGst": null
+                  },
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-0000000000a5",
+                    "name": "Solar Soak",
+                    "billingUnitType": "FixedBillingUnit",
+                    "chargePerKwh": 0.25,
+                    "chargePerKwhIncludingGst": 0.275,
+                    "timeOfDayStartMinutes": 660,
+                    "timeOfDayEndMinutes": 840,
+                    "kwhStart": 24,
+                    "kwhEnd": 0,
+                    "capPerKwhIncludingGst": null
+                  },
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-0000000000a6",
+                    "name": "Supply Charge",
+                    "billingUnitType": "PeriodicBillingUnit",
+                    "periodicCharge": 1.276,
+                    "periodicChargeIncludingGst": 1.4036,
+                    "period": "Daily",
+                    "chargePerKwh": null,
+                    "chargePerKwhIncludingGst": null,
+                    "timeOfDayStartMinutes": null,
+                    "timeOfDayEndMinutes": null,
+                    "kwhStart": null,
+                    "kwhEnd": null,
+                    "capPerKwhIncludingGst": null
+                  },
+                  {
+                    "billingUnitId": "00000000-0000-4000-8000-0000000000a7",
+                    "name": "Solar Feed In Tariff",
+                    "billingUnitType": "FeedInTariff",
+                    "chargePerKwh": -0.02,
+                    "chargePerKwhIncludingGst": -0.02,
+                    "timeOfDayStartMinutes": 780,
+                    "timeOfDayEndMinutes": 780,
+                    "kwhStart": 0,
+                    "kwhEnd": 0,
+                    "capPerKwhIncludingGst": null
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "meters": {
+      "fetchedAt": null,
+      "error": null,
+      "body": null
+    },
+    "tokens": {
+      "fetchedAt": null,
+      "error": null,
+      "body": null
+    },
+    "outlook": {
+      "fetchedAt": "2026-10-01T02:25:40Z",
+      "error": null,
+      "body": {
+        "region": "NSW1",
+        "now": {
+          "time": "2026-10-01T12:25:00+10:00",
+          "region": "NSW1",
+          "averageCentsPerKwh": 8.4321,
+          "minCentsPerKwh": 8.4321,
+          "maxCentsPerKwh": 8.4321,
+          "intervals": 1
+        },
+        "nowAssessment": {
+          "tier": "Normal",
+          "centsPerKwh": 8.4321,
+          "aboveHighFenceCentsPerKwh": 0,
+          "multipleOfMedian": 1.04
+        },
+        "nextHour": {
+          "from": "0001-01-01T00:00:00+00:00",
+          "to": "0001-01-01T00:00:00+00:00",
+          "publishedAt": "2026-10-01T12:25:00+10:00",
+          "minCentsPerKwh": 0,
+          "maxCentsPerKwh": 0,
+          "points": []
+        },
+        "nextHourPeak": null,
+        "ahead": null,
+        "aheadPeak": null,
+        "baseline": {
+          "from": "2026-09-24T12:27:00+10:00",
+          "to": "2026-10-01T12:27:00+10:00",
+          "intervals": 2016,
+          "medianCentsPerKwh": 8.1,
+          "lowerQuartileCentsPerKwh": -4,
+          "upperQuartileCentsPerKwh": 10,
+          "lowFenceCentsPerKwh": -25,
+          "highFenceCentsPerKwh": 31,
+          "extremeFenceCentsPerKwh": 52
+        }
+      }
+    },
+    "usageHalfHourly": {
+      "fetchedAt": null,
+      "error": null,
+      "body": null
+    },
+    "usageDaily": {
+      "fetchedAt": null,
+      "error": null,
+      "body": null
+    }
+  },
+  "expected": {
+    "account": {
+      "status": "ok",
+      "fault": null,
+      "accountNumber": "36200000000001",
+      "accountState": "ACTIVE",
+      "productName": "Solar Sharer",
+      "region": "Ausgrid",
+      "timeZone": "Australia/Sydney",
+      "tokenExpiresAt": null,
+      "tokenScope": null,
+      "tokenExpiringSoon": null
+    },
+    "tariff": {
+      "status": "ok",
+      "fault": null,
+      "structure": "timeOfUse",
+      "spotLinked": false,
+      "peak": false,
+      "offPeak": true,
+      "period": {
+        "band": "offPeak",
+        "name": "Solar Soak",
+        "rateCentsPerKwh": 0,
+        "kwhLimit": 24,
+        "rateAfterLimitCentsPerKwh": 27.5,
+        "blocks": [
+          {
+            "fromKwh": 0,
+            "toKwh": 24,
+            "rateCentsPerKwh": 0
+          },
+          {
+            "fromKwh": 24,
+            "toKwh": null,
+            "rateCentsPerKwh": 27.5
+          }
+        ],
+        "wholesaleLinked": false,
+        "wholesaleCapCentsPerKwh": null,
+        "start": "2026-10-01T01:00:00Z",
+        "end": "2026-10-01T04:00:00Z"
+      },
+      "nextChange": "2026-10-01T04:00:00Z",
+      "schedule": [
+        {
+          "startMinute": 0,
+          "endMinute": 360,
+          "band": "shoulder",
+          "name": "Overnight",
+          "rateCentsPerKwh": 22,
+          "kwhLimit": null,
+          "rateAfterLimitCentsPerKwh": null,
+          "blocks": [
+            {
+              "fromKwh": 0,
+              "toKwh": null,
+              "rateCentsPerKwh": 22
+            }
+          ],
+          "wholesaleLinked": false,
+          "wholesaleCapCentsPerKwh": null
+        },
+        {
+          "startMinute": 360,
+          "endMinute": 660,
+          "band": "shoulder",
+          "name": "Day",
+          "rateCentsPerKwh": 33,
+          "kwhLimit": null,
+          "rateAfterLimitCentsPerKwh": null,
+          "blocks": [
+            {
+              "fromKwh": 0,
+              "toKwh": null,
+              "rateCentsPerKwh": 33
+            }
+          ],
+          "wholesaleLinked": false,
+          "wholesaleCapCentsPerKwh": null
+        },
+        {
+          "startMinute": 660,
+          "endMinute": 840,
+          "band": "offPeak",
+          "name": "Solar Soak",
+          "rateCentsPerKwh": 0,
+          "kwhLimit": 24,
+          "rateAfterLimitCentsPerKwh": 27.5,
+          "blocks": [
+            {
+              "fromKwh": 0,
+              "toKwh": 24,
+              "rateCentsPerKwh": 0
+            },
+            {
+              "fromKwh": 24,
+              "toKwh": null,
+              "rateCentsPerKwh": 27.5
+            }
+          ],
+          "wholesaleLinked": false,
+          "wholesaleCapCentsPerKwh": null
+        },
+        {
+          "startMinute": 840,
+          "endMinute": 1320,
+          "band": "peak",
+          "name": "Evening",
+          "rateCentsPerKwh": 44,
+          "kwhLimit": null,
+          "rateAfterLimitCentsPerKwh": null,
+          "blocks": [
+            {
+              "fromKwh": 0,
+              "toKwh": null,
+              "rateCentsPerKwh": 44
+            }
+          ],
+          "wholesaleLinked": false,
+          "wholesaleCapCentsPerKwh": null
+        },
+        {
+          "startMinute": 1320,
+          "endMinute": 1440,
+          "band": "shoulder",
+          "name": "Overnight",
+          "rateCentsPerKwh": 22,
+          "kwhLimit": null,
+          "rateAfterLimitCentsPerKwh": null,
+          "blocks": [
+            {
+              "fromKwh": 0,
+              "toKwh": null,
+              "rateCentsPerKwh": 22
+            }
+          ],
+          "wholesaleLinked": false,
+          "wholesaleCapCentsPerKwh": null
+        }
+      ]
+    },
+    "price": {
+      "status": "ok",
+      "fault": null,
+      "centsPerKwh": 8.4321,
+      "intervalStart": "2026-10-01T02:25:00Z",
+      "tier": "Normal",
+      "priceHigh": false,
+      "priceLow": false,
+      "negative": false,
+      "forecast": {
+        "nextHour": null,
+        "ahead": null
+      }
+    },
+    "energy": {
+      "status": "faulted",
+      "fault": {
+        "code": "not_loaded"
+      },
+      "nmi": null,
+      "intervals": null,
+      "days": null,
+      "latestIntervalEnd": null
+    },
+    "nextEvaluation": "2026-10-01T02:40:00Z"
+  }
+}

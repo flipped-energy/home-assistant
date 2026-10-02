@@ -1,0 +1,65 @@
+{
+  "name": "dst-overlap-first-pass-inside",
+  "description": "Plan S, Sydney, 02:10 AEDT on 4 Apr 2027, the first pass through the repeated hour: inside Night Saver, which ends at 02:30 AEDT.",
+  "input": {
+    "instant": "2027-04-03T15:10:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": {
+      "fetchedAt": "2027-04-03T13:01:00Z",
+      "error": null,
+      "body": {
+        "accounts": [
+          {
+            "accountNumber": "36200000000001",
+            "siteAddress": "1 Example St, Sampletown NSW 2000",
+            "accountState": "ACTIVE",
+            "productName": "Night Saver",
+            "product": {
+              "gridType": "Ausgrid",
+              "timeZone": "Australia/Sydney",
+              "hasUpcomingPlanChange": false,
+              "upcomingPlan": null,
+              "upcomingPlanEffectiveDate": "2027-07-01T00:00:00",
+              "currentPlan": {
+                "planId": "00000000-0000-4000-8000-000000000019",
+                "code": "EXAMPLE-NIGHT-SAVER",
+                "start": "2026-07-01T00:00:00",
+                "end": "2027-06-30T00:00:00",
+                "billingUnits": [
+                  { "billingUnitId": "00000000-0000-4000-8000-000000001901", "name": "Anytime", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0.3, "chargePerKwhIncludingGst": 0.33, "timeOfDayStartMinutes": 150, "timeOfDayEndMinutes": 60, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null },
+                  { "billingUnitId": "00000000-0000-4000-8000-000000001902", "name": "Night Saver", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0.1, "chargePerKwhIncludingGst": 0.11, "timeOfDayStartMinutes": 60, "timeOfDayEndMinutes": 150, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": { "fetchedAt": null, "error": null, "body": null },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": { "status": "ok", "fault": null, "accountNumber": "36200000000001", "accountState": "ACTIVE", "productName": "Night Saver", "region": "Ausgrid", "timeZone": "Australia/Sydney", "tokenExpiresAt": null, "tokenScope": null, "tokenExpiringSoon": null },
+    "tariff": {
+      "status": "ok",
+      "fault": null,
+      "structure": "timeOfUse",
+      "spotLinked": false,
+      "peak": false,
+      "offPeak": true,
+      "period": { "band": "offPeak", "name": "Night Saver", "rateCentsPerKwh": 11, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 11 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null, "start": "2027-04-03T14:00:00Z", "end": "2027-04-03T15:30:00Z" },
+      "nextChange": "2027-04-03T15:30:00Z",
+      "schedule": [
+        { "startMinute": 0, "endMinute": 60, "band": "peak", "name": "Anytime", "rateCentsPerKwh": 33, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 33 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null },
+        { "startMinute": 60, "endMinute": 150, "band": "offPeak", "name": "Night Saver", "rateCentsPerKwh": 11, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 11 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null },
+        { "startMinute": 150, "endMinute": 1440, "band": "peak", "name": "Anytime", "rateCentsPerKwh": 33, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 33 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null }
+      ]
+    },
+    "price": { "status": "faulted", "fault": { "code": "not_loaded" }, "centsPerKwh": null, "intervalStart": null, "tier": null, "priceHigh": null, "priceLow": null, "negative": null, "forecast": null },
+    "energy": { "status": "faulted", "fault": { "code": "not_loaded" }, "nmi": null, "intervals": null, "days": null, "latestIntervalEnd": null },
+    "nextEvaluation": "2027-04-03T15:30:00Z"
+  }
+}

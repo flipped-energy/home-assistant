@@ -1,0 +1,40 @@
+{
+  "name": "evaluation-timer-30h",
+  "description": "Flat plan whose last day is 2026-10-02 (plan change at 2026-10-03 00:00 Sydney = 2026-10-02T14:00:00Z). The first E3 answers 401 with the gateway body, so every request stops and the sync timers are cancelled; only the evaluation timer runs. At 08:00:00Z the price ages out and nextEvaluation is 30 h ahead: armed with 86400 s, it fires at 2026-10-02T08:00:00Z and is re-armed for 21600 s without recomputing, and recomputes at 2026-10-02T14:00:00Z, where the tariff group becomes plan_unavailable.",
+  "start": "2026-10-01T07:46:10Z",
+  "end": "2026-10-02T14:30:00Z",
+  "restarts": [],
+  "config": {"token":"fdk_SEQUENCEFIXTURE000000000000000000wXyZ","accountNumber":"36200000000001","nmi":null,"priceHighThresholdCentsPerKwh":null,"priceLowThresholdCentsPerKwh":null},
+  "responses": [
+    {"method":"GET","path":"/api/MyAccount/GetAccountData","query":{},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":{"accounts":[{"accountNumber":"36200000000001","siteAddress":"1 Example St, Sampletown NSW 2000","accountState":"ACTIVE","productName":"Anytime Flat","product":{"gridType":"Ausgrid","timeZone":"Australia/Sydney","hasUpcomingPlanChange":false,"upcomingPlan":null,"upcomingPlanEffectiveDate":"2026-10-03T00:00:00","currentPlan":{"planId":"00000000-0000-4000-8000-000000000101","code":"EXAMPLE-ANYTIME","start":"2026-07-01T00:00:00","end":"2026-10-02T00:00:00","billingUnits":[{"billingUnitId":"00000000-0000-4000-8000-0000000001a1","name":"Anytime Rate","billingUnitType":"FixedBillingUnit","chargePerKwh":0.2927,"chargePerKwhIncludingGst":0.32197,"timeOfDayStartMinutes":780,"timeOfDayEndMinutes":780,"kwhStart":0,"kwhEnd":0,"capPerKwhIncludingGst":null},{"billingUnitId":"00000000-0000-4000-8000-0000000001a2","name":"Supply Charge","billingUnitType":"PeriodicBillingUnit","periodicCharge":1.1,"periodicChargeIncludingGst":1.21,"period":"Daily","chargePerKwh":null,"chargePerKwhIncludingGst":null,"timeOfDayStartMinutes":null,"timeOfDayEndMinutes":null,"kwhStart":null,"kwhEnd":null,"capPerKwhIncludingGst":null}]}}}]}}},
+    {"method":"GET","path":"/api/Billing/meters","query":{},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":{"meters":[{"nmi":"4102000000","address":"1 Example St, Sampletown NSW 2000"}]}}},
+    {"method":"GET","path":"/tokens","query":{},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":{"tokens":[]}}},
+    {"method":"GET","path":"/api/Live/nempricing/outlook","query":{"region":"Ausgrid"},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":{"region":"NSW1","now":{"time":"2026-10-01T17:45:00+10:00","region":"NSW1","averageCentsPerKwh":9.6,"minCentsPerKwh":9.6,"maxCentsPerKwh":9.6,"intervals":1},"nowAssessment":{"tier":"Normal","centsPerKwh":9.6,"aboveHighFenceCentsPerKwh":0,"multipleOfMedian":1.1},"nextHour":null,"nextHourPeak":null,"ahead":null,"aheadPeak":null,"baseline":{"from":"2026-09-24T17:45:00+10:00","to":"2026-10-01T17:45:00+10:00","intervals":2016,"medianCentsPerKwh":8.1,"lowerQuartileCentsPerKwh":-4,"upperQuartileCentsPerKwh":10,"lowFenceCentsPerKwh":-25,"highFenceCentsPerKwh":31,"extremeFenceCentsPerKwh":52}}}},
+    {"method":"GET","path":"/api/Usage/usage/projectreads/halfhourly","query":{"start":"2026-09-24T00:00:00","end":"2026-10-02T00:00:00","nmi":"4102000000"},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":[]}},
+    {"method":"GET","path":"/api/Usage/usage/projectreads/daily","query":{"start":"2026-09-24T00:00:00","end":"2026-10-02T00:00:00","nmi":"4102000000"},"answer":{"status":200,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":[]}},
+    {"method":"GET","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T17:45:00","timeoutSeconds":"55"},"holdSeconds":0,"answer":{"status":401,"headers":{"Content-Type":"application/json; charset=utf-8"},"body":"{\"error\":\"unauthorized\",\"message\":\"Token is invalid, expired or revoked.\"}"}}
+  ],
+  "expected": {
+    "requests": [
+      {"sendAt":"2026-10-01T07:46:10Z","path":"/api/MyAccount/GetAccountData","query":{}},
+      {"sendAt":"2026-10-01T07:46:10Z","path":"/api/Billing/meters","query":{}},
+      {"sendAt":"2026-10-01T07:46:10Z","path":"/tokens","query":{}},
+      {"sendAt":"2026-10-01T07:46:10Z","path":"/api/Live/nempricing/outlook","query":{"region":"Ausgrid"}},
+      {"sendAt":"2026-10-01T07:46:10Z","path":"/api/Usage/usage/projectreads/halfhourly","query":{"start":"2026-09-24T00:00:00","end":"2026-10-02T00:00:00","nmi":"4102000000"}},
+      {"sendAt":"2026-10-01T07:46:10Z","path":"/api/Usage/usage/projectreads/daily","query":{"start":"2026-09-24T00:00:00","end":"2026-10-02T00:00:00","nmi":"4102000000"}},
+      {"sendAt":"2026-10-01T07:50:00Z","path":"/api/Live/nempricing/wait","query":{"region":"Ausgrid","since":"2026-10-01T17:45:00","timeoutSeconds":"55"}}
+    ],
+    "timers": [
+      {"armedAt":"2026-10-01T07:46:10Z","timer":"accountSync","target":"2026-10-01T14:01:00Z","delaySeconds":22490},
+      {"armedAt":"2026-10-01T07:46:10Z","timer":"evaluation","target":"2026-10-02T14:00:00Z","delaySeconds":86400},
+      {"armedAt":"2026-10-01T07:46:10Z","timer":"evaluation","target":"2026-10-01T08:00:00Z","delaySeconds":830},
+      {"armedAt":"2026-10-01T07:46:10Z","timer":"price","target":"2026-10-01T07:50:00Z","delaySeconds":230},
+      {"armedAt":"2026-10-01T07:46:10Z","timer":"usageSync","target":"2026-10-02T02:01:00Z","delaySeconds":65690},
+      {"armedAt":"2026-10-01T08:00:00Z","timer":"evaluation","target":"2026-10-02T14:00:00Z","delaySeconds":86400},
+      {"armedAt":"2026-10-02T08:00:00Z","timer":"evaluation","target":"2026-10-02T14:00:00Z","delaySeconds":21600},
+      {"armedAt":"2026-10-02T14:00:00Z","timer":"evaluation","target":"2026-10-03T07:46:10Z","delaySeconds":63970}
+    ],
+    "groups": {"account":{"status":"ok","fault":null},"tariff":{"status":"faulted","fault":{"code":"plan_unavailable"}},"price":{"status":"faulted","fault":{"code":"http_error","httpStatus":401,"body":"{\"error\":\"unauthorized\",\"message\":\"Token is invalid, expired or revoked.\"}","bodyBytes":74}},"energy":{"status":"ok","fault":null}},
+    "storedAccountNumber": "36200000000001"
+  }
+}

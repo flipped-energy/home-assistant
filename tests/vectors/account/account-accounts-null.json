@@ -1,0 +1,52 @@
+{
+  "name": "account-accounts-null",
+  "description": "Account body { \"accounts\": null }: no eligible account, so account, tariff, price and energy all fault account_none.",
+  "input": {
+    "instant": "2026-10-01T02:30:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": { "fetchedAt": "2026-09-30T14:01:00Z", "error": null, "body": { "accounts": null } },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": { "fetchedAt": null, "error": null, "body": null },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": {
+      "status": "faulted",
+      "fault": { "code": "account_none" },
+      "accountNumber": null,
+      "accountState": null,
+      "productName": null,
+      "region": null,
+      "timeZone": null,
+      "tokenExpiresAt": null,
+      "tokenScope": null,
+      "tokenExpiringSoon": null
+    },
+    "tariff": {
+      "status": "faulted",
+      "fault": { "code": "account_none" },
+      "structure": null,
+      "spotLinked": null,
+      "peak": null,
+      "offPeak": null,
+      "period": null,
+      "nextChange": null,
+      "schedule": null
+    },
+    "price": {
+      "status": "faulted",
+      "fault": { "code": "account_none" },
+      "centsPerKwh": null,
+      "intervalStart": null,
+      "tier": null,
+      "priceHigh": null,
+      "priceLow": null,
+      "negative": null,
+      "forecast": null
+    },
+    "energy": { "status": "faulted", "fault": { "code": "account_none" }, "nmi": null, "intervals": null, "days": null, "latestIntervalEnd": null },
+    "nextEvaluation": "2026-10-02T14:01:00Z"
+  }
+}

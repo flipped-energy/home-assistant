@@ -1,0 +1,63 @@
+{
+  "name": "account-http-401-gateway",
+  "description": "No account body ever received; the last attempt got the gateway 401 DeveloperApiError for an unknown, expired or revoked token: all four groups fault http_error 401 with the body verbatim.",
+  "input": {
+    "instant": "2026-10-01T02:30:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": {
+      "fetchedAt": null,
+      "error": { "kind": "http", "status": 401, "body": "{\"error\":\"unauthorized\",\"message\":\"Unknown, expired or revoked token.\"}", "bodyBytes": 71 },
+      "body": null
+    },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": { "fetchedAt": null, "error": null, "body": null },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": {
+      "status": "faulted",
+      "fault": { "code": "http_error", "httpStatus": 401, "body": "{\"error\":\"unauthorized\",\"message\":\"Unknown, expired or revoked token.\"}", "bodyBytes": 71 },
+      "accountNumber": null,
+      "accountState": null,
+      "productName": null,
+      "region": null,
+      "timeZone": null,
+      "tokenExpiresAt": null,
+      "tokenScope": null,
+      "tokenExpiringSoon": null
+    },
+    "tariff": {
+      "status": "faulted",
+      "fault": { "code": "http_error", "httpStatus": 401, "body": "{\"error\":\"unauthorized\",\"message\":\"Unknown, expired or revoked token.\"}", "bodyBytes": 71 },
+      "structure": null,
+      "spotLinked": null,
+      "peak": null,
+      "offPeak": null,
+      "period": null,
+      "nextChange": null,
+      "schedule": null
+    },
+    "price": {
+      "status": "faulted",
+      "fault": { "code": "http_error", "httpStatus": 401, "body": "{\"error\":\"unauthorized\",\"message\":\"Unknown, expired or revoked token.\"}", "bodyBytes": 71 },
+      "centsPerKwh": null,
+      "intervalStart": null,
+      "tier": null,
+      "priceHigh": null,
+      "priceLow": null,
+      "negative": null,
+      "forecast": null
+    },
+    "energy": {
+      "status": "faulted",
+      "fault": { "code": "http_error", "httpStatus": 401, "body": "{\"error\":\"unauthorized\",\"message\":\"Unknown, expired or revoked token.\"}", "bodyBytes": 71 },
+      "nmi": null,
+      "intervals": null,
+      "days": null,
+      "latestIntervalEnd": null
+    },
+    "nextEvaluation": null
+  }
+}

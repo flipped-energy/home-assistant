@@ -1,0 +1,108 @@
+{
+  "entity": {
+    "switch": {
+      "peak_rate": {
+        "default": "mdi:arrow-up-bold-circle-outline"
+      },
+      "off_peak_rate": {
+        "default": "mdi:arrow-down-bold-circle-outline"
+      },
+      "shoulder_rate": {
+        "default": "mdi:arrow-right-bold-circle-outline"
+      },
+      "wholesale_price_high": {
+        "default": "mdi:cash-plus"
+      },
+      "wholesale_price_low": {
+        "default": "mdi:cash-minus"
+      }
+    },
+    "binary_sensor": {
+      "wholesale_price_negative": {
+        "default": "mdi:cash-refund"
+      },
+      "rate_wholesale_linked": {
+        "default": "mdi:link-variant"
+      },
+      "token_expiring": {
+        "default": "mdi:key-alert"
+      }
+    },
+    "sensor": {
+      "wholesale_price": {
+        "default": "mdi:cash"
+      },
+      "wholesale_price_level": {
+        "default": "mdi:gauge"
+      },
+      "wholesale_price_forecast": {
+        "default": "mdi:chart-line"
+      },
+      "current_rate": {
+        "default": "mdi:currency-usd"
+      },
+      "rate_period_allowance": {
+        "default": "mdi:counter"
+      },
+      "rate_after_allowance": {
+        "default": "mdi:currency-usd"
+      },
+      "rate_period": {
+        "default": "mdi:clock-time-four-outline"
+      },
+      "rate_period_name": {
+        "default": "mdi:tag-text-outline"
+      },
+      "next_rate_change": {
+        "default": "mdi:clock-end"
+      },
+      "fixed_rate_component": {
+        "default": "mdi:currency-usd"
+      },
+      "wholesale_rate_cap": {
+        "default": "mdi:arrow-collapse-up"
+      },
+      "account_status": {
+        "default": "mdi:alert-circle-outline",
+        "state": {
+          "ok": "mdi:check-circle-outline"
+        }
+      },
+      "tariff_status": {
+        "default": "mdi:alert-circle-outline",
+        "state": {
+          "ok": "mdi:check-circle-outline"
+        }
+      },
+      "wholesale_price_status": {
+        "default": "mdi:alert-circle-outline",
+        "state": {
+          "ok": "mdi:check-circle-outline"
+        }
+      },
+      "usage_history_status": {
+        "default": "mdi:alert-circle-outline",
+        "state": {
+          "ok": "mdi:check-circle-outline"
+        }
+      },
+      "usage_history_up_to": {
+        "default": "mdi:history"
+      },
+      "api_calls_remaining_today": {
+        "default": "mdi:counter"
+      }
+    }
+  },
+  "services": {
+    "get_wholesale_price_forecast": {
+      "service": "mdi:chart-line"
+    },
+    "get_rate_schedule": {
+      "service": "mdi:calendar-clock"
+    },
+    "get_usage_history": {
+      "service": "mdi:history"
+    }
+  }
+}

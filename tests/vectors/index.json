@@ -1,0 +1,490 @@
+[
+  {
+    "path": "account/account-accounts-null.json",
+    "sha256": "701cb48cac22d99ecfbd51d40c73180e30ee6f03da77f42bdcf58e91b18d3e2f"
+  },
+  {
+    "path": "account/account-almost-stale.json",
+    "sha256": "5b17061b08e881daa85299c97d68c8661852c89efb9d0ed975017bcf2ad631f1"
+  },
+  {
+    "path": "account/account-error-after-good-snapshot.json",
+    "sha256": "608b58c1b217a5ec432d5913d25e263a7bb66678b0af0b2414f8044259610510"
+  },
+  {
+    "path": "account/account-http-302.json",
+    "sha256": "d3a69a7c179738251a018d1cf99a7ca21bd17e5b4fb932f1463b4dc3059bc8c3"
+  },
+  {
+    "path": "account/account-http-401-core-locked-out.json",
+    "sha256": "231922f6a7596b8aaba8f4b06b855bef9a225de8d74545dc0ad2328c04540ef6"
+  },
+  {
+    "path": "account/account-http-401-gateway.json",
+    "sha256": "22c7a526fc8086ddbfb9c1b8ff14771ef63c188fc55dc34b73e9956db3a87e00"
+  },
+  {
+    "path": "account/account-http-403-developer-mode.json",
+    "sha256": "5226809535f862f07b8f69816367bea10f8ac0e2168381cb088b760f41ac131a"
+  },
+  {
+    "path": "account/account-network-error.json",
+    "sha256": "980b7b8692c5f7699e83f3d185d21caa7cc13277f03c532ec918ec3016295675"
+  },
+  {
+    "path": "account/account-not-found.json",
+    "sha256": "7ef79ef5b7ad2c2e3fe3b5d0fcfff2cc9ae8e282dce49c2262d5aa9a6f40fe7d"
+  },
+  {
+    "path": "account/account-not-supplied.json",
+    "sha256": "43719a26f5eb1293e280c26ad31ff47f55883231641ba6c5df577789ff570c3f"
+  },
+  {
+    "path": "account/account-pinned-second-appears.json",
+    "sha256": "e7c570756b15d630c2873c8bf6bb6e8355110925d2b29899337f78308fda431d"
+  },
+  {
+    "path": "account/account-pinned-terminated-new-active.json",
+    "sha256": "4421f3e056c3eb172ecb88ac9dea5bd51599a52791ec2d5e3730330512f7cb0e"
+  },
+  {
+    "path": "account/account-selected-by-number.json",
+    "sha256": "7e4380edb45f1e241306883020ba95b5e6a5b3d97d657c2e7f25433fe7523f47"
+  },
+  {
+    "path": "account/account-selection-required.json",
+    "sha256": "14bd2e73a1575c4be4bf77f987ba1ddb9d29973da1daa21303a7266dc1cebd07"
+  },
+  {
+    "path": "account/account-stale-with-error.json",
+    "sha256": "b6c407e5defe3e8a977d2122ed34486109dfc4bb60f89085c562de484fe3070f"
+  },
+  {
+    "path": "account/account-stale.json",
+    "sha256": "9f55c38cbeaebf1751dc97a90de4257b74ab63d86e0802aa604a72dc682a8ca0"
+  },
+  {
+    "path": "account/account-two-states-no-number.json",
+    "sha256": "42483b17db177fd2d1ed6ca24950cffc8429f7ed4f0e3cc07ac1edd06c3c2c36"
+  },
+  {
+    "path": "account/clock-unsynced.json",
+    "sha256": "5837d41288e894b1438c09193eee187a3ee5a1f8d10d980c260a4d2cfe772f7c"
+  },
+  {
+    "path": "energy/usage-cost-null.json",
+    "sha256": "fcdb01a19da7555b1df0b4f28cbc6d21b83ce427ee9c1bb88934cadff821ceb4"
+  },
+  {
+    "path": "energy/usage-daily.json",
+    "sha256": "3795acc9e65307c758c4f96ddb27ca45f6cec5e186874a143ea35f33f950754c"
+  },
+  {
+    "path": "energy/usage-dst-end-repeated-hour.json",
+    "sha256": "5ed86e7f845d06298e65dbc7ff7358eaf2761175bc8bc0f7b0e9bfc07ca6bbae"
+  },
+  {
+    "path": "energy/usage-dst-end-single-repeated-bucket.json",
+    "sha256": "393ece4ec122d39300b18b7770fa3518c2c3bbf135cd2cb792075025a45395e2"
+  },
+  {
+    "path": "energy/usage-duplicate-key-cost-mismatch.json",
+    "sha256": "85fc0dfec7144c7c72e27b234925bc585394ecb2f0a0ef5ad94da510b0867b06"
+  },
+  {
+    "path": "energy/usage-duplicate-key-rows.json",
+    "sha256": "5a748b9ea4385454128cbf6739b43dcf3a971d4c83e72b70370ce0c0d3111b1a"
+  },
+  {
+    "path": "energy/usage-empty.json",
+    "sha256": "12b728e04878077186f950fddad988229896a847a526d34ea0fa187548f30a1d"
+  },
+  {
+    "path": "energy/usage-foreign-nmi-rows-dropped.json",
+    "sha256": "518757242018b1617a9fd893f502f2246deafacc9e51da8d87eae0a8ca8da634"
+  },
+  {
+    "path": "energy/usage-http-404-no-meters.json",
+    "sha256": "c813a208108c98e7d12beed0ca0ea02f290049cbc65c297e0df5b29e2b4a7a36"
+  },
+  {
+    "path": "energy/usage-mapping.json",
+    "sha256": "c0e47edbcd8829175742a5c4ec9d1fbf3cd9ae3967aa9ea180ff4b251a5b3110"
+  },
+  {
+    "path": "energy/usage-nmi-ambiguous.json",
+    "sha256": "235df809a014899f76c9df46957fc168a5c05c4b34d36fe65824d32bbe248e01"
+  },
+  {
+    "path": "energy/usage-nmi-configured-missing.json",
+    "sha256": "3404a2317f486f66939ee722e87bdb8d98c61894444646bc8783c64a90a83f16"
+  },
+  {
+    "path": "energy/usage-nmi-single.json",
+    "sha256": "967d5cd19a18718a9888d6e6cd2c4b6823286be9e0c9bcd2029341789067836a"
+  },
+  {
+    "path": "energy/usage-other-type-ignored.json",
+    "sha256": "01796218fdcf6378120472878894de3fe94ea9ac76bd6c38fb517610a9ec5742"
+  },
+  {
+    "path": "energy/usage-timezone-ambiguous.json",
+    "sha256": "bb9b63c6bec20e91c3846f18cd514a13700d72b4db2ca2d87755aeaa5076c12b"
+  },
+  {
+    "path": "evaluation/next-evaluation-account-age.json",
+    "sha256": "a356ffeadf1288ece6231c1ac1bf0b109c20d4ce57c8b6391e81bc9be3dae357"
+  },
+  {
+    "path": "evaluation/next-evaluation-price-first.json",
+    "sha256": "2dc9b6c93580a8c0981f913aded90a23d67615bde42b1a3f9d060ee72cc2604b"
+  },
+  {
+    "path": "evaluation/next-evaluation-tariff-first.json",
+    "sha256": "9c5235ace388c092e527fe6cf3fb62308bf52b1ed69071192170b2ee60970880"
+  },
+  {
+    "path": "evaluation/next-evaluation-token-warning.json",
+    "sha256": "173c9bf2fd8ae064ed74b86804718f9acba637152efe7f41c4b020451391ed48"
+  },
+  {
+    "path": "price/fixed-plan-negative-wholesale.json",
+    "sha256": "25e2db99990200059565fcedfc7ad1cd6eae15a52675fa1b887f45f6947910bb"
+  },
+  {
+    "path": "price/forecast-empty-points.json",
+    "sha256": "304a6b7a19bcaa506cab4c1361335c89df1c06ddebf1e4f6b3d42a8dc7a47057"
+  },
+  {
+    "path": "price/forecast-next-hour.json",
+    "sha256": "5db13c66ecd05e3a1e399fcc6002c89d93018cf05017c8cbc07bc215e39fd0aa"
+  },
+  {
+    "path": "price/negative-price-elevated-tier.json",
+    "sha256": "49fad39a80cceac359405790ed2c8cfc6e28e9a95f597cb941af381b5d75c712"
+  },
+  {
+    "path": "price/negative-price-normal-tier.json",
+    "sha256": "a4a1d29f851af1d52c0e919ee868b24f96d9fc774c796f1e201a47707d6dce22"
+  },
+  {
+    "path": "price/outlook-http-500.json",
+    "sha256": "ea92aaa2de8a8333ad4e30d2a02ddecb66fe19d69d93e5b4320797d7d21a02a2"
+  },
+  {
+    "path": "price/outlook-time-without-offset.json",
+    "sha256": "f69db954b5c879e321d2f436f010848287081d9ddad3707883d23f3b5a5d9ca1"
+  },
+  {
+    "path": "price/price-error-body-shortened.json",
+    "sha256": "6f5907b283d68c69758d2f65cc24ccf77911a107f0b399196e7a1f55af0b300c"
+  },
+  {
+    "path": "price/price-fresh-899s.json",
+    "sha256": "044a514bd4ed9ccdf2b1aaac2ee342e2427b6476513406c0b6ba73dca1b198b4"
+  },
+  {
+    "path": "price/price-stale-900s.json",
+    "sha256": "cc0f00403727275bb39cdfd397d1fe364c5d6d8429eb6d059d40b8401c30a950"
+  },
+  {
+    "path": "price/price-stale-with-error.json",
+    "sha256": "df17f2a98f44f1c20929288bfce92d3ba446221230837a401372d24f84aa08b5"
+  },
+  {
+    "path": "price/region-missing.json",
+    "sha256": "d7a44d53a6551ccf154fc495d979b4367cad4e29d1a3a7bfe9ef55e449b4cf78"
+  },
+  {
+    "path": "price/threshold-high-inclusive.json",
+    "sha256": "072ec4f8c85fe82bd12507ffdf63f193fc307e134d0c0ddccc18fb6f1e50114e"
+  },
+  {
+    "path": "price/threshold-high-only.json",
+    "sha256": "c6ae01e41a8802dc8c7567cf340ba0f8ee4b145f5d5e612576351f88a57bc932"
+  },
+  {
+    "path": "price/threshold-low-inclusive.json",
+    "sha256": "bcf15bcb2003062d5e47218c2504327c9f0ff7754c86ee66c1267417c604f6e7"
+  },
+  {
+    "path": "price/threshold-low-negative.json",
+    "sha256": "5e234896e2d9b3bead03b6855204a0318eca13eceb6e9365acfa22ef4fe89117"
+  },
+  {
+    "path": "price/threshold-one-sided-overlap-high.json",
+    "sha256": "52364d0c77e533ec10aa9c5c13c4c0b4776a59823e012b7d24081e8c911171f6"
+  },
+  {
+    "path": "price/threshold-one-sided-overlap-low.json",
+    "sha256": "14fea765b27fdd1ce200d97424b025582102015fdfb6cc813c9fc04a84ff7275"
+  },
+  {
+    "path": "price/tier-elevated.json",
+    "sha256": "3c956366b2d114f024e3145456b52e325d5aadc070874e3eb410842d00a82704"
+  },
+  {
+    "path": "price/tier-normal.json",
+    "sha256": "5fb978f94af7a2daea3216043e55062f3e3bf38a8f0222b675d38ca0e145651b"
+  },
+  {
+    "path": "price/tier-spike.json",
+    "sha256": "35406064e7118a1f7efd0398688c99c56bca59cbf5b78f888d32095dd8755d8e"
+  },
+  {
+    "path": "price/tier-unusually-low.json",
+    "sha256": "54911f6381042242c8b331e38c0ec28e0ee8ea67c45c99953402899442f7b4bd"
+  },
+  {
+    "path": "price/zero-price-normal-tier.json",
+    "sha256": "18c551b3d38aab07d9eea0399e3e5295a6af755d4e4a15c1f06727c62fa55812"
+  },
+  {
+    "path": "tariff/billing-unit-null-window.json",
+    "sha256": "63f0b42c9817addeea36101308b9101ad2de8d1d2592de82c15fcba60fc8b7e6"
+  },
+  {
+    "path": "tariff/billing-unit-overlap-weekday-weekend.json",
+    "sha256": "b40b9010bc562fbb1b383dd40c718cf40a187ff00f0b1b39840d45921d67d1e8"
+  },
+  {
+    "path": "tariff/billing-unit-unknown-type-ignored.json",
+    "sha256": "1037d56384c38a40bfc58dbc5fd049fc5fe1756fd067239935bcfdd173997644"
+  },
+  {
+    "path": "tariff/billing-unit-unsupported-type.json",
+    "sha256": "50804a5e5e6f739416c6e9f6ef23940a396507becaaa91f5dd7582da80e6e1fe"
+  },
+  {
+    "path": "tariff/dst-end-bne-same-instant.json",
+    "sha256": "96f28795144336d637d2b0d36e5e2e2b6b0493e976ab9970aaa52085528a75f7"
+  },
+  {
+    "path": "tariff/dst-end-syd-night-before.json",
+    "sha256": "dbaace6749cb9087359cd6a08863bfcba1176e28adc6602fd860db6b537bc34a"
+  },
+  {
+    "path": "tariff/dst-gap-after-jump.json",
+    "sha256": "4651040e76541166002df66c30f720bd3d90a3975a823c89fc50748eb4024b16"
+  },
+  {
+    "path": "tariff/dst-gap-window-cut-short.json",
+    "sha256": "2de4241c61a93082cc849c1285909e1608ea397764a8bc29e8a3d2697b78eead"
+  },
+  {
+    "path": "tariff/dst-none-bne-same-instant.json",
+    "sha256": "31296d97974e3932e598331e7e338420832edb2c2d23cca19cd67b7a92bba5e1"
+  },
+  {
+    "path": "tariff/dst-overlap-first-pass-inside.json",
+    "sha256": "9530cc8e30ea087622966a73ffb8ba490df64f7f8b70eef50a3d53ae13059ae9"
+  },
+  {
+    "path": "tariff/dst-overlap-first-pass-outside.json",
+    "sha256": "7776243b268c7ce2aec9290c87b60b47f71025e380bfa47bc16ea4519d5f986b"
+  },
+  {
+    "path": "tariff/dst-overlap-second-pass-inside.json",
+    "sha256": "8ae0fad669ac1d17dfac2b908cac99146da2aceb70fbe5f0715d831f7c650d63"
+  },
+  {
+    "path": "tariff/dst-start-adl-first-day-inside.json",
+    "sha256": "84d27ba4f205f31bb58eed9ca4c0e387e2ef3b6bfb475a43bd464d47b3bfe58c"
+  },
+  {
+    "path": "tariff/dst-start-syd-first-day-inside.json",
+    "sha256": "550edf089c51b02551243df38bc28d97737ed131b366355db4da34112acc91ed"
+  },
+  {
+    "path": "tariff/dst-start-syd-night-before.json",
+    "sha256": "6637553d634db16a6581aaa959aed66a65b8015b78e4cbee1b60242e721f986b"
+  },
+  {
+    "path": "tariff/flat-with-controlled-load-and-feed-in.json",
+    "sha256": "d47a8a20d126041f326b6b5665fe30e059ac861b2c1b1271ce87c7d759490365"
+  },
+  {
+    "path": "tariff/free-window-end-exact.json",
+    "sha256": "86123d3a659ec31c971602987c1b69d24cd0fe16f1f0dfc68cb24cf4cca9b45b"
+  },
+  {
+    "path": "tariff/free-window-kwh-unlimited-sentinel.json",
+    "sha256": "75a323a6272ec4ff4fc2bc75c2a00df910091ab65f091f4d9e5e5d1124ffb7a4"
+  },
+  {
+    "path": "tariff/free-window-last-millisecond.json",
+    "sha256": "b989b82e86ba151e5446719f9492e5ee2ee2e0e73a8ab0ac438931b9326da3a6"
+  },
+  {
+    "path": "tariff/free-window-nsw-day.json",
+    "sha256": "9679e6a5c1f37dbbc57ee65a7408691b4ce6b818f77c758e4f8c38163b3266cb"
+  },
+  {
+    "path": "tariff/free-window-nsw-evening.json",
+    "sha256": "b3b2d8b61b95d089514748a93c4bcf7e81079f24d0fbbedcfc7999b7104d3f15"
+  },
+  {
+    "path": "tariff/free-window-nsw-inside.json",
+    "sha256": "b66b37cf644542d1359eae5fb65276532af054aa781591a71872aa26941d70aa"
+  },
+  {
+    "path": "tariff/free-window-nsw-overnight.json",
+    "sha256": "a10530418291a7959fcb6321d3523636bdddd82955c60d6493690c020232e5d9"
+  },
+  {
+    "path": "tariff/free-window-sa-inside.json",
+    "sha256": "3f363b705ce96e89960d13b104c2141384be1ab4d22ae3bf2a63e27c50176dc2"
+  },
+  {
+    "path": "tariff/free-window-start-exact.json",
+    "sha256": "6f25329dfac84c7b2b8e5309a476bbc044366d0ce3e4d4262d4d0e544cd36bff"
+  },
+  {
+    "path": "tariff/free-window-two-unit-inside.json",
+    "sha256": "edbf1f562854e3f01c6eebe2fd6cb83b09079b4ee911722aee6e055887689788"
+  },
+  {
+    "path": "tariff/free-window-two-unit-outside.json",
+    "sha256": "a97821e07eb8a98250e79ff4d0365a68e5ad404bb00196e2d48f5ea1e628d93f"
+  },
+  {
+    "path": "tariff/plan-change-at.json",
+    "sha256": "64fc49dbbf9b59e736d1506df5d4571a349ea2ae2379f0aca7f1edfc5e91d6de"
+  },
+  {
+    "path": "tariff/plan-change-before.json",
+    "sha256": "7cce8e82bd4b90e3fa231bbb09ad43a29700066a1059322e124b142b89a03605"
+  },
+  {
+    "path": "tariff/plan-change-inside-period.json",
+    "sha256": "52f3016bf54fa8a4cf7839299983c59ac4d610542b1bc0ce80c41ee039eae8f9"
+  },
+  {
+    "path": "tariff/plan-date-malformed.json",
+    "sha256": "17b3654e827a777d5ae51a6ae7e70058cb588d3d468fafe534e54b7eae195239"
+  },
+  {
+    "path": "tariff/plan-end-beyond-horizon.json",
+    "sha256": "1799c4bf04051051c1538e653df6c421b22eb8ac70fcf1583c37cef971d523c5"
+  },
+  {
+    "path": "tariff/plan-end-inside-horizon.json",
+    "sha256": "eeb2cdb0e1754877cb3a91a5632741cc73b143dc8ad42a942724d9de4362366e"
+  },
+  {
+    "path": "tariff/plan-end-year-3000.json",
+    "sha256": "c17e29b11d1f0e563385f6b84e8756cd5b7b6cebfb9ac91ca9d9748498ed9359"
+  },
+  {
+    "path": "tariff/plan-expired.json",
+    "sha256": "2b588c53db880113735abba286d43b14f723712763bf6e85062a25264316fde0"
+  },
+  {
+    "path": "tariff/plan-gap-before-upcoming-inside.json",
+    "sha256": "49822f2375f09314e7de99ecd9d1104840f01ddaccb44be557d339082b3ac3c7"
+  },
+  {
+    "path": "tariff/plan-gap-before-upcoming-last-day.json",
+    "sha256": "28a628f177dc998401afecf53a83abd6d150685f3e5578a73cb8483bf0b1c460"
+  },
+  {
+    "path": "tariff/plan-last-day.json",
+    "sha256": "962907db97d8c1602d857dfd3a8368b31424c1e6af871c5c881ed42aa0faba1b"
+  },
+  {
+    "path": "tariff/plan-open-ended-9999.json",
+    "sha256": "591492a39d224f7165bfd2a0dd22ab5e33e46b3a276c2fbd6790810d157f3edd"
+  },
+  {
+    "path": "tariff/plan-start-year-0001.json",
+    "sha256": "59490a7a901701b8681cafc4c8d68e47ee8c1060efd498306d6c0df952c6e81f"
+  },
+  {
+    "path": "tariff/plan-started-inside-period.json",
+    "sha256": "fbefec383ee9872997ad49b4e0fa09222e617688c980a32ecffb98d92cba8628"
+  },
+  {
+    "path": "tariff/same-rate-named-windows.json",
+    "sha256": "eba23b728c99c3d2a7d37192cff6fc24c80b80a8473f93871a550abaaecb6718"
+  },
+  {
+    "path": "tariff/spot-only.json",
+    "sha256": "bf828cb1700d12e0123249fa8a6b64df2758e39fb1e96ed6ff753fab73145a4e"
+  },
+  {
+    "path": "tariff/spot-stacked-cap-window-inside.json",
+    "sha256": "14c2d40eaa5d14af3a1c81449a3d914e2c3a6a4e256adf660eb4bd6201962bf5"
+  },
+  {
+    "path": "tariff/spot-stacked-cap-window-outside.json",
+    "sha256": "f9da833beaf4909665de82ecb1e8b56a3a8eee06f279cd7b6feadb65fa85c766"
+  },
+  {
+    "path": "tariff/spot-stacked.json",
+    "sha256": "dccc8e312bfbaf0de85da7a4b3260b4b3bb77ec1e521ed11bfb54c22a02954e9"
+  },
+  {
+    "path": "tariff/spot-switching.json",
+    "sha256": "fe75e91c1dcdd3b14e4fb563b115b1998f51260cb8b422b2d68556107663d3be"
+  },
+  {
+    "path": "tariff/tariff-gap-kwh-block.json",
+    "sha256": "004da2af111082e9475a6a882e9f9e327c1e486a7dfd719b8e1c2ba4208db15b"
+  },
+  {
+    "path": "tariff/tariff-gap.json",
+    "sha256": "380313ef2dcec19e079b167c792d94e707270898512f760fff7d4dee7f6a33d1"
+  },
+  {
+    "path": "tariff/timezone-missing.json",
+    "sha256": "c7cde73589c876124b028d95535a60d4cdab4d0c1ac196d6d9582cbfbc5f37a4"
+  },
+  {
+    "path": "tariff/tou-day-cheapest-inside.json",
+    "sha256": "8f5352a2cd57b558941fdb50af941c26d8df07e3d52ec108b1fdfd4d54824acb"
+  },
+  {
+    "path": "tariff/tou-day-cheapest-overnight.json",
+    "sha256": "1612c64faf256cc3d2966db292709a3076138e351486c902fc268623f06d25f9"
+  },
+  {
+    "path": "tariff/tou-three-rate-offpeak.json",
+    "sha256": "6699e7165a3444a5012c612db9ae8670f4dba3d322b1a9993319e97d345bea8b"
+  },
+  {
+    "path": "tariff/tou-three-rate-peak.json",
+    "sha256": "6683d5b2035edffb4ffbd4f3f92f546139b1cc45ca38e83879ff80155d7eae59"
+  },
+  {
+    "path": "tariff/tou-three-rate-shoulder-evening.json",
+    "sha256": "123ce6534e0c0da2ecdcd648ddf50830204e70eb5ab8f619941f62672940c032"
+  },
+  {
+    "path": "tariff/tou-three-rate-shoulder.json",
+    "sha256": "d14a7fc0164768265fa3c37a90bab5f2ce24c62e2903b03fa003870d31a7ae6b"
+  },
+  {
+    "path": "tariff/tou-two-rate-across-midnight.json",
+    "sha256": "a79589bce1807e4d9c26060f958488bffbedeb45753c1f1bfe2cf10d0287a18a"
+  },
+  {
+    "path": "tariff/tou-two-rate-peak.json",
+    "sha256": "daf67e09e8308b11a52e9a24c7f944263779662b1dcc02a9dae508390bae9100"
+  },
+  {
+    "path": "tariff/unit-name-null.json",
+    "sha256": "6cc11d2e9fab7e43d4d8b4cddce30fbba858a30be4e1f0704c6f279064206527"
+  },
+  {
+    "path": "tariff/upcoming-date-without-upcoming-plan.json",
+    "sha256": "cf7931dc18f1eee7c32489be6cf8aff5fc2509998ada649501ffaeb1988c0a45"
+  },
+  {
+    "path": "tariff/upcoming-plan-absent.json",
+    "sha256": "51430a29bb83ad08d5dec706ab3f765a3202952ceb8836051633eb566960b3a7"
+  },
+  {
+    "path": "tariff/upcoming-plan-already-ended.json",
+    "sha256": "6af29870791f509cfd2584a1df1ac48970ca94751b02b7856b2651a4afdda830"
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "name": "spot-switching",
+  "description": "Free Power Window fixed 11:00-14:00 and a spot unit for the rest of the day, Sydney, 12:30 local: minute 0 has only the spot unit, so the whole plan faults even inside the fixed window.",
+  "input": {
+    "instant": "2026-10-01T02:30:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": {
+      "fetchedAt": "2026-09-30T14:01:00Z",
+      "error": null,
+      "body": {
+        "accounts": [
+          {
+            "accountNumber": "36200000000001",
+            "siteAddress": "1 Example St, Sampletown NSW 2000",
+            "accountState": "ACTIVE",
+            "productName": "Spot Switching",
+            "product": {
+              "gridType": "Ausgrid",
+              "timeZone": "Australia/Sydney",
+              "hasUpcomingPlanChange": false,
+              "upcomingPlan": null,
+              "upcomingPlanEffectiveDate": "2027-07-01T00:00:00",
+              "currentPlan": {
+                "planId": "00000000-0000-4000-8000-000000000010",
+                "code": "EXAMPLE-SPOT-SWITCHING",
+                "start": "2026-07-01T00:00:00",
+                "end": "2027-06-30T00:00:00",
+                "billingUnits": [
+                  { "billingUnitId": "00000000-0000-4000-8000-000000001001", "name": "Free Power Window", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0, "chargePerKwhIncludingGst": 0, "timeOfDayStartMinutes": 660, "timeOfDayEndMinutes": 840, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null },
+                  { "billingUnitId": "00000000-0000-4000-8000-000000001002", "name": "Wholesale", "billingUnitType": "SpotBillingUnit", "chargePerKwh": 0.1, "chargePerKwhIncludingGst": 0.11, "timeOfDayStartMinutes": 840, "timeOfDayEndMinutes": 660, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": { "fetchedAt": null, "error": null, "body": null },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": { "status": "ok", "fault": null, "accountNumber": "36200000000001", "accountState": "ACTIVE", "productName": "Spot Switching", "region": "Ausgrid", "timeZone": "Australia/Sydney", "tokenExpiresAt": null, "tokenScope": null, "tokenExpiringSoon": null },
+    "tariff": { "status": "faulted", "fault": { "code": "spot_direction_unknown", "message": "minute 0, units 00000000-0000-4000-8000-000000001002" }, "structure": null, "spotLinked": null, "peak": null, "offPeak": null, "period": null, "nextChange": null, "schedule": null },
+    "price": { "status": "faulted", "fault": { "code": "not_loaded" }, "centsPerKwh": null, "intervalStart": null, "tier": null, "priceHigh": null, "priceLow": null, "negative": null, "forecast": null },
+    "energy": { "status": "faulted", "fault": { "code": "not_loaded" }, "nmi": null, "intervals": null, "days": null, "latestIntervalEnd": null },
+    "nextEvaluation": "2026-10-02T14:01:00Z"
+  }
+}

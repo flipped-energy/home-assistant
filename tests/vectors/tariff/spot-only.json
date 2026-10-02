@@ -1,0 +1,48 @@
+{
+  "name": "spot-only",
+  "description": "A single capped spot unit all day, Sydney, 12:30 local: no fixed unit anywhere, spot direction unknown.",
+  "input": {
+    "instant": "2026-10-01T02:30:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": {
+      "fetchedAt": "2026-09-30T14:01:00Z",
+      "error": null,
+      "body": {
+        "accounts": [
+          {
+            "accountNumber": "36200000000001",
+            "siteAddress": "1 Example St, Sampletown NSW 2000",
+            "accountState": "ACTIVE",
+            "productName": "Spot Only",
+            "product": {
+              "gridType": "Ausgrid",
+              "timeZone": "Australia/Sydney",
+              "hasUpcomingPlanChange": false,
+              "upcomingPlan": null,
+              "upcomingPlanEffectiveDate": "2027-07-01T00:00:00",
+              "currentPlan": {
+                "planId": "00000000-0000-4000-8000-000000000011",
+                "code": "EXAMPLE-SPOT-ONLY",
+                "start": "2026-07-01T00:00:00",
+                "end": "2027-06-30T00:00:00",
+                "billingUnits": [ { "billingUnitId": "00000000-0000-4000-8000-000000001101", "name": "Wholesale", "billingUnitType": "SpotWithCapBillingUnit", "chargePerKwh": 0.1, "chargePerKwhIncludingGst": 0.11, "timeOfDayStartMinutes": 0, "timeOfDayEndMinutes": 0, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": 0.55 } ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": { "fetchedAt": null, "error": null, "body": null },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": { "status": "ok", "fault": null, "accountNumber": "36200000000001", "accountState": "ACTIVE", "productName": "Spot Only", "region": "Ausgrid", "timeZone": "Australia/Sydney", "tokenExpiresAt": null, "tokenScope": null, "tokenExpiringSoon": null },
+    "tariff": { "status": "faulted", "fault": { "code": "spot_direction_unknown", "message": "minute 0, units 00000000-0000-4000-8000-000000001101" }, "structure": null, "spotLinked": null, "peak": null, "offPeak": null, "period": null, "nextChange": null, "schedule": null },
+    "price": { "status": "faulted", "fault": { "code": "not_loaded" }, "centsPerKwh": null, "intervalStart": null, "tier": null, "priceHigh": null, "priceLow": null, "negative": null, "forecast": null },
+    "energy": { "status": "faulted", "fault": { "code": "not_loaded" }, "nmi": null, "intervals": null, "days": null, "latestIntervalEnd": null },
+    "nextEvaluation": "2026-10-02T14:01:00Z"
+  }
+}

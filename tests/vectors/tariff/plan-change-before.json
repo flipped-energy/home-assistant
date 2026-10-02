@@ -1,0 +1,72 @@
+{
+  "name": "plan-change-before",
+  "description": "Current plan G ends 1 Oct 2026 (last day), upcoming plan D starts 2 Oct; 23:59 AEST on 1 Oct: flat, the next change is the plan change at local midnight.",
+  "input": {
+    "instant": "2026-10-01T13:59:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": {
+      "fetchedAt": "2026-09-30T14:01:00Z",
+      "error": null,
+      "body": {
+        "accounts": [
+          {
+            "accountNumber": "36200000000001",
+            "siteAddress": "1 Example St, Sampletown NSW 2000",
+            "accountState": "ACTIVE",
+            "productName": "Anytime Switched On!",
+            "product": {
+              "gridType": "Ausgrid",
+              "timeZone": "Australia/Sydney",
+              "hasUpcomingPlanChange": true,
+              "upcomingPlan": {
+                "planId": "00000000-0000-4000-8000-000000000004",
+                "code": "EXAMPLE-FREEDOM-AUSGRID",
+                "start": "2026-10-02T00:00:00",
+                "end": "2027-06-30T00:00:00",
+                "billingUnits": [
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000401", "name": "Off Peak", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0.1895, "chargePerKwhIncludingGst": 0.20845, "timeOfDayStartMinutes": 1260, "timeOfDayEndMinutes": 900, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null },
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000402", "name": "Peak", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0.5163, "chargePerKwhIncludingGst": 0.56793, "timeOfDayStartMinutes": 900, "timeOfDayEndMinutes": 1260, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null }
+                ]
+              },
+              "upcomingPlanEffectiveDate": "2026-10-02T00:00:00",
+              "currentPlan": {
+                "planId": "00000000-0000-4000-8000-000000000007",
+                "code": "EXAMPLE-ANYTIME",
+                "start": "2026-07-01T00:00:00",
+                "end": "2026-10-01T00:00:00",
+                "billingUnits": [
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000701", "name": "Anytime Rate", "billingUnitType": "FixedBillingUnit", "chargePerKwh": 0.2927, "chargePerKwhIncludingGst": 0.32197, "timeOfDayStartMinutes": 780, "timeOfDayEndMinutes": 780, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null },
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000702", "name": "Controlled Load", "billingUnitType": "ControlledLoadBillingUnit", "chargePerKwh": 0.17, "chargePerKwhIncludingGst": 0.187, "timeOfDayStartMinutes": 0, "timeOfDayEndMinutes": 0, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null },
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000703", "name": "Supply Charge", "billingUnitType": "PeriodicBillingUnit", "periodicCharge": 1.276, "periodicChargeIncludingGst": 1.4036, "period": "Daily", "chargePerKwh": null, "chargePerKwhIncludingGst": null, "timeOfDayStartMinutes": null, "timeOfDayEndMinutes": null, "kwhStart": null, "kwhEnd": null, "capPerKwhIncludingGst": null },
+                  { "billingUnitId": "00000000-0000-4000-8000-000000000704", "name": "Solar Feed In Tariff", "billingUnitType": "FeedInTariff", "chargePerKwh": -0.02, "chargePerKwhIncludingGst": -0.02, "timeOfDayStartMinutes": 780, "timeOfDayEndMinutes": 780, "kwhStart": 0, "kwhEnd": 0, "capPerKwhIncludingGst": null }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": { "fetchedAt": null, "error": null, "body": null },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": { "status": "ok", "fault": null, "accountNumber": "36200000000001", "accountState": "ACTIVE", "productName": "Anytime Switched On!", "region": "Ausgrid", "timeZone": "Australia/Sydney", "tokenExpiresAt": null, "tokenScope": null, "tokenExpiringSoon": null },
+    "tariff": {
+      "status": "ok",
+      "fault": null,
+      "structure": "flat",
+      "spotLinked": false,
+      "peak": false,
+      "offPeak": false,
+      "period": { "band": "anytime", "name": "Anytime Rate", "rateCentsPerKwh": 32.197, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 32.197 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null, "start": null, "end": null },
+      "nextChange": "2026-10-01T14:00:00Z",
+      "schedule": [ { "startMinute": 0, "endMinute": 1440, "band": "anytime", "name": "Anytime Rate", "rateCentsPerKwh": 32.197, "kwhLimit": null, "rateAfterLimitCentsPerKwh": null, "blocks": [ { "fromKwh": 0, "toKwh": null, "rateCentsPerKwh": 32.197 } ], "wholesaleLinked": false, "wholesaleCapCentsPerKwh": null } ]
+    },
+    "price": { "status": "faulted", "fault": { "code": "not_loaded" }, "centsPerKwh": null, "intervalStart": null, "tier": null, "priceHigh": null, "priceLow": null, "negative": null, "forecast": null },
+    "energy": { "status": "faulted", "fault": { "code": "not_loaded" }, "nmi": null, "intervals": null, "days": null, "latestIntervalEnd": null },
+    "nextEvaluation": "2026-10-01T14:00:00Z"
+  }
+}

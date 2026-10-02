@@ -1,0 +1,63 @@
+{
+  "name": "account-http-403-developer-mode",
+  "description": "No account body ever received; the last attempt got the gateway 403 developer_mode_disabled (APIs and MCPs turned off): all four groups fault http_error 403 with the body verbatim.",
+  "input": {
+    "instant": "2026-10-01T02:30:00Z",
+    "config": { "accountNumber": null, "nmi": null, "tokenPreview": "fdk_Ab12…wXyZ", "priceHighThresholdCentsPerKwh": null, "priceLowThresholdCentsPerKwh": null },
+    "account": {
+      "fetchedAt": null,
+      "error": { "kind": "http", "status": 403, "body": "{\"error\":\"developer_mode_disabled\",\"message\":\"APIs and MCPs are turned off for this account.\"}", "bodyBytes": 94 },
+      "body": null
+    },
+    "meters": { "fetchedAt": null, "error": null, "body": null },
+    "tokens": { "fetchedAt": null, "error": null, "body": null },
+    "outlook": { "fetchedAt": null, "error": null, "body": null },
+    "usageHalfHourly": { "fetchedAt": null, "error": null, "body": null },
+    "usageDaily": { "fetchedAt": null, "error": null, "body": null }
+  },
+  "expected": {
+    "account": {
+      "status": "faulted",
+      "fault": { "code": "http_error", "httpStatus": 403, "body": "{\"error\":\"developer_mode_disabled\",\"message\":\"APIs and MCPs are turned off for this account.\"}", "bodyBytes": 94 },
+      "accountNumber": null,
+      "accountState": null,
+      "productName": null,
+      "region": null,
+      "timeZone": null,
+      "tokenExpiresAt": null,
+      "tokenScope": null,
+      "tokenExpiringSoon": null
+    },
+    "tariff": {
+      "status": "faulted",
+      "fault": { "code": "http_error", "httpStatus": 403, "body": "{\"error\":\"developer_mode_disabled\",\"message\":\"APIs and MCPs are turned off for this account.\"}", "bodyBytes": 94 },
+      "structure": null,
+      "spotLinked": null,
+      "peak": null,
+      "offPeak": null,
+      "period": null,
+      "nextChange": null,
+      "schedule": null
+    },
+    "price": {
+      "status": "faulted",
+      "fault": { "code": "http_error", "httpStatus": 403, "body": "{\"error\":\"developer_mode_disabled\",\"message\":\"APIs and MCPs are turned off for this account.\"}", "bodyBytes": 94 },
+      "centsPerKwh": null,
+      "intervalStart": null,
+      "tier": null,
+      "priceHigh": null,
+      "priceLow": null,
+      "negative": null,
+      "forecast": null
+    },
+    "energy": {
+      "status": "faulted",
+      "fault": { "code": "http_error", "httpStatus": 403, "body": "{\"error\":\"developer_mode_disabled\",\"message\":\"APIs and MCPs are turned off for this account.\"}", "bodyBytes": 94 },
+      "nmi": null,
+      "intervals": null,
+      "days": null,
+      "latestIntervalEnd": null
+    },
+    "nextEvaluation": null
+  }
+}
