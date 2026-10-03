@@ -15,14 +15,15 @@ CONF_SPOT_PRICES: Final = "spotPrices"
 CONF_TOKEN: Final = "token"
 CONF_ACCOUNT_NUMBER: Final = "accountNumber"
 CONF_NMI: Final = "nmi"
-CONF_PRICE_HIGH_THRESHOLD: Final = "priceHighThresholdCentsPerKwh"
-CONF_PRICE_LOW_THRESHOLD: Final = "priceLowThresholdCentsPerKwh"
+CONF_PRICE_HIGH_THRESHOLD: Final = "priceHighThresholdAudPerKwh"
+CONF_PRICE_LOW_THRESHOLD: Final = "priceLowThresholdAudPerKwh"
 
 TOKEN_PREFIX: Final = "fdk_"
 DEVICE_NAME: Final = "Flipped Energy"
 MANUFACTURER: Final = "Flipped Energy"
 USER_AGENT_PRODUCT: Final = "flipped-energy-home-assistant"
-UNIT_CENTS_PER_KWH: Final = "c/kWh"
+UNIT_AUD_PER_KWH: Final = "AUD/kWh"
+CENTS_PER_DOLLAR: Final = 100
 MAX_STATE_LENGTH: Final = 255
 TIER_STATES: Final = {
     "UnusuallyLow": "unusually_low",
@@ -37,6 +38,14 @@ ISSUE_API_REFUSED: Final = "api_refused"
 
 DATA_PRICE_LOOPS: HassKey[PriceLoopRegistry] = HassKey("flipped_energy_au_price_loops")
 DATA_REQUEST_GATES: HassKey[GateRegistry] = HassKey("flipped_energy_au_request_gates")
+
+
+def to_dollars(cents: float | None) -> float | None:
+    return None if cents is None else round(cents / CENTS_PER_DOLLAR, 9)
+
+
+def to_cents(dollars: float) -> float:
+    return round(dollars * CENTS_PER_DOLLAR, 9)
 
 
 def instance_key(account_number: str, nmi: str | None) -> str:

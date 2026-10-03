@@ -14,7 +14,7 @@ from homeassistant.helpers import service
 from homeassistant.helpers.selector import ConfigEntrySelector
 from homeassistant.util.json import JsonObjectType, JsonValueType
 
-from .const import DOMAIN, TIER_STATES
+from .const import DOMAIN, TIER_STATES, to_dollars
 from .runtime import InstanceRuntime
 from .signals.model import Fault, ForecastWindow
 
@@ -70,11 +70,11 @@ def forecast_window(window: ForecastWindow | None) -> JsonValueType:
         "from": window["from"],
         "to": window["to"],
         "published_at": window["publishedAt"],
-        "min_cents_per_kwh": window["minCentsPerKwh"],
-        "max_cents_per_kwh": window["maxCentsPerKwh"],
+        "min_aud_per_kwh": to_dollars(window["minCentsPerKwh"]),
+        "max_aud_per_kwh": to_dollars(window["maxCentsPerKwh"]),
         "level": TIER_STATES[window["tier"]],
         "points": [
-            {"start": point["start"], "cents_per_kwh": point["centsPerKwh"]}
+            {"start": point["start"], "aud_per_kwh": to_dollars(point["centsPerKwh"])}
             for point in window["points"]
         ],
     }

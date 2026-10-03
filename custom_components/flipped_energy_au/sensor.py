@@ -17,7 +17,7 @@ from homeassistant.helpers.typing import StateType
 from homeassistant.util import dt as dt_util
 
 from . import FlippedEnergyConfigEntry
-from .const import MAX_STATE_LENGTH, TIER_STATES, UNIT_CENTS_PER_KWH
+from .const import MAX_STATE_LENGTH, TIER_STATES, UNIT_AUD_PER_KWH, to_dollars
 from .entity import (
     FlippedEnergyEntity,
     Group,
@@ -93,7 +93,7 @@ def current_rate(runtime: InstanceRuntime) -> Value:
     period = current_period(runtime.signals)
     if period is None or period["wholesaleLinked"]:
         return None
-    return period["rateCentsPerKwh"]
+    return to_dollars(period["rateCentsPerKwh"])
 
 
 def price_level(runtime: InstanceRuntime) -> Value:
@@ -108,7 +108,7 @@ def next_hour(runtime: InstanceRuntime) -> ForecastWindow | None:
 
 def forecast_value(runtime: InstanceRuntime) -> Value:
     window = next_hour(runtime)
-    return None if window is None else window["maxCentsPerKwh"]
+    return None if window is None else to_dollars(window["maxCentsPerKwh"])
 
 
 def forecast_attributes(runtime: InstanceRuntime) -> Attributes:
@@ -116,13 +116,13 @@ def forecast_attributes(runtime: InstanceRuntime) -> Attributes:
     if window is None:
         return None
     return {
-        "min_cents_per_kwh": window["minCentsPerKwh"],
+        "min_aud_per_kwh": to_dollars(window["minCentsPerKwh"]),
         "level": TIER_STATES[window["tier"]],
         "from": window["from"],
         "to": window["to"],
         "published_at": window["publishedAt"],
         "points": [
-            {"start": point["start"], "cents_per_kwh": point["centsPerKwh"]}
+            {"start": point["start"], "aud_per_kwh": to_dollars(point["centsPerKwh"])}
             for point in window["points"]
         ],
     }
@@ -192,10 +192,10 @@ def rate(key: str, read: Callable[[Period], float | None]) -> FlippedEnergySenso
     return FlippedEnergySensorDescription(
         key=key,
         group="tariff",
-        native_unit_of_measurement=UNIT_CENTS_PER_KWH,
+        native_unit_of_measurement=UNIT_AUD_PER_KWH,
         state_class=SensorStateClass.MEASUREMENT,
-        suggested_display_precision=3,
-        value=period_value(read),
+        suggested_display_precision=5,
+        value=period_value(lambda period: to_dollars(read(period))),
     )
 
 
@@ -215,10 +215,10 @@ SENSORS: Final = (
     FlippedEnergySensorDescription(
         key="wholesale_price",
         group="price",
-        native_unit_of_measurement=UNIT_CENTS_PER_KWH,
+        native_unit_of_measurement=UNIT_AUD_PER_KWH,
         state_class=SensorStateClass.MEASUREMENT,
-        suggested_display_precision=2,
-        value=lambda runtime: runtime.signals["price"]["centsPerKwh"],
+        suggested_display_precision=4,
+        value=lambda runtime: to_dollars(runtime.signals["price"]["centsPerKwh"]),
         attributes=lambda runtime: {"interval_start": runtime.signals["price"]["intervalStart"]},
     ),
     FlippedEnergySensorDescription(
@@ -231,9 +231,9 @@ SENSORS: Final = (
     FlippedEnergySensorDescription(
         key="current_rate",
         group="tariff",
-        native_unit_of_measurement=UNIT_CENTS_PER_KWH,
+        native_unit_of_measurement=UNIT_AUD_PER_KWH,
         state_class=SensorStateClass.MEASUREMENT,
-        suggested_display_precision=3,
+        suggested_display_precision=5,
         value=current_rate,
     ),
     FlippedEnergySensorDescription(
@@ -267,8 +267,8 @@ SENSORS: Final = (
 FORECAST: Final = FlippedEnergySensorDescription(
     key="wholesale_price_forecast",
     group="price",
-    native_unit_of_measurement=UNIT_CENTS_PER_KWH,
-    suggested_display_precision=2,
+    native_unit_of_measurement=UNIT_AUD_PER_KWH,
+    suggested_display_precision=4,
     value=forecast_value,
     attributes=forecast_attributes,
 )

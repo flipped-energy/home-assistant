@@ -36,7 +36,7 @@ from .const import (
     CONF_VIRTUAL_DEVICES,
     DOMAIN,
     TOKEN_PREFIX,
-    UNIT_CENTS_PER_KWH,
+    UNIT_AUD_PER_KWH,
     device_title,
     instance_key,
 )
@@ -57,13 +57,13 @@ TOKEN_SCHEMA: Final = vol.Schema(
 )
 THRESHOLD_SELECTOR: Final = NumberSelector(
     NumberSelectorConfig(
-        mode=NumberSelectorMode.BOX, step="any", unit_of_measurement=UNIT_CENTS_PER_KWH
+        mode=NumberSelectorMode.BOX, step="any", unit_of_measurement=UNIT_AUD_PER_KWH
     )
 )
 OPTIONS_SCHEMA: Final = vol.Schema(
     {
         vol.Optional(CONF_VIRTUAL_DEVICES, default=True): bool,
-        vol.Optional(CONF_SPOT_PRICES): bool,
+        vol.Optional(CONF_SPOT_PRICES, default=True): bool,
         vol.Optional(CONF_PRICE_HIGH_THRESHOLD): THRESHOLD_SELECTOR,
         vol.Optional(CONF_PRICE_LOW_THRESHOLD): THRESHOLD_SELECTOR,
     }

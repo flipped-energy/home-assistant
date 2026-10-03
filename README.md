@@ -42,7 +42,7 @@ Each account (and meter) is one entry and one device. The first device is named 
 
 ## Device and price settings
 
-Open **Settings > Devices & services > Flipped Energy > Configure**. **Expose virtual devices** controls the read-only virtual switches. **Show spot prices** overrides whether wholesale price switches and sensors appear; when unset, they appear only for a spot-linked account. These settings reload the integration.
+Open **Settings > Devices & services > Flipped Energy > Configure**. **Expose virtual devices** controls the read-only virtual switches. **Show wholesale prices** controls whether the wholesale price switches and sensors appear; they are on for every account unless you turn them off. These settings reload the integration.
 
 Create tokens and use the live API reference, tester and MCP setup in [APIs and MCPs](https://flipped.energy/accounts/developer).
 
@@ -65,7 +65,7 @@ The five switches show a state and cannot be switched. Turning one on or off is 
 **Wholesale Price High and Wholesale Price Low.** Without thresholds (see "Thresholds"):
 
 - `Wholesale Price High` is on while `Wholesale Price Level` is Elevated or Spike and the price is not negative.
-- `Wholesale Price Low` is on while `Wholesale Price Level` is Unusually low or the price is below 0 c/kWh.
+- `Wholesale Price Low` is on while `Wholesale Price Level` is Unusually low or the price is below 0 AUD/kWh.
 
 A threshold you set replaces the rule for its own switch. The two are never on together. Both follow the current price and can change every 5 minutes.
 
@@ -73,7 +73,7 @@ A threshold you set replaces the rule for its own switch. The two are never on t
 
 | Entity | Entity id | On while | Present |
 |---|---|---|---|
-| Wholesale Price Negative | `binary_sensor.flipped_energy_wholesale_price_negative` | the wholesale price is below 0 c/kWh | when spot prices are shown |
+| Wholesale Price Negative | `binary_sensor.flipped_energy_wholesale_price_negative` | the wholesale price is below 0 AUD/kWh | unless wholesale prices are turned off |
 | Wholesale-Linked Rate | `binary_sensor.flipped_energy_wholesale_linked_rate` | the current period of your plan follows the wholesale market | only on a wholesale-linked plan |
 | Token Expiring Soon | `binary_sensor.flipped_energy_token_expiring_soon` | the token expires within 14 days; attributes `expires_at`, `scope` | always (diagnostic) |
 
@@ -81,17 +81,17 @@ A threshold you set replaces the rule for its own switch. The two are never on t
 
 | Entity | Entity id | Shows |
 |---|---|---|
-| Wholesale Price | `sensor.flipped_energy_wholesale_price` | the current 5-minute wholesale price in c/kWh, negative values included; attribute `interval_start` |
+| Wholesale Price | `sensor.flipped_energy_wholesale_price` | the current 5-minute wholesale price in AUD/kWh, negative values included; attribute `interval_start` |
 | Wholesale Price Level | `sensor.flipped_energy_wholesale_price_level` | Flipped's assessment of the current wholesale price against the region's last 7 days: Unusually low, Normal, Elevated or Spike |
-| Wholesale Price Forecast | `sensor.flipped_energy_wholesale_price_forecast` | the highest forecast wholesale price of the next hour in c/kWh; attributes `min_cents_per_kwh`, `level`, `from`, `to`, `published_at`, `points` (5-minute steps) |
-| Current Rate | `sensor.flipped_energy_current_rate` | the rate of your plan now, c/kWh including GST; unknown while the rate is wholesale-linked |
+| Wholesale Price Forecast | `sensor.flipped_energy_wholesale_price_forecast` | the highest forecast wholesale price of the next hour in AUD/kWh; attributes `min_aud_per_kwh`, `level`, `from`, `to`, `published_at`, `points` (5-minute steps) |
+| Current Rate | `sensor.flipped_energy_current_rate` | the rate of your plan now, AUD/kWh including GST; unknown while the rate is wholesale-linked |
 | Rate Allowance | `sensor.flipped_energy_rate_allowance` | the kWh per day charged at the Current Rate within this rate period; unknown when the period has no allowance |
-| Rate After Allowance | `sensor.flipped_energy_rate_after_allowance` | the rate once the allowance is used, c/kWh including GST; unknown when there is no allowance |
+| Rate After Allowance | `sensor.flipped_energy_rate_after_allowance` | the rate once the allowance is used, AUD/kWh including GST; unknown when there is no allowance |
 | Rate Period | `sensor.flipped_energy_rate_period` | Peak, Shoulder, Off-peak or Anytime (Anytime on a single-rate plan); attributes `name`, `structure`, `spot_linked`, `period_start`, `period_end`, `blocks`, `schedule` |
 | Rate Period Name | `sensor.flipped_energy_rate_period_name` | the name of the current rate period exactly as your plan states it |
 | Next Rate Change | `sensor.flipped_energy_next_rate_change` | when the rate period or the plan changes next (the rate can be the same on both sides) |
-| Fixed Rate Component | `sensor.flipped_energy_fixed_rate_component` | only on a wholesale-linked plan: the fixed part of the current rate, c/kWh including GST |
-| Wholesale Rate Cap | `sensor.flipped_energy_wholesale_rate_cap` | only on a wholesale-linked plan: the cap on the wholesale-linked part, c/kWh including GST |
+| Fixed Rate Component | `sensor.flipped_energy_fixed_rate_component` | only on a wholesale-linked plan: the fixed part of the current rate, AUD/kWh including GST |
+| Wholesale Rate Cap | `sensor.flipped_energy_wholesale_rate_cap` | only on a wholesale-linked plan: the cap on the wholesale-linked part, AUD/kWh including GST |
 | Account Status, Rates Status, Wholesale Price Status, Usage History Status | `sensor.flipped_energy_account_status`, `..._rates_status`, `..._wholesale_price_status`, `..._usage_history_status` | diagnostic: `ok` or the fault code of that group (see "When something is wrong") |
 | Usage History Up To | `sensor.flipped_energy_usage_history_up_to` | diagnostic: the end of the newest half-hour of usage history received |
 | API Calls Remaining Today | `sensor.flipped_energy_api_calls_remaining_today` | diagnostic, disabled by default: the API calls left today, as last reported by the API |
@@ -109,8 +109,8 @@ The rates come from your plan and keep working without API calls. The wholesale 
 
 On the Flipped Energy entry choose **Configure**:
 
-- **Wholesale Price High threshold** (c/kWh): when set, `Wholesale Price High` is on while the wholesale price is at or above it.
-- **Wholesale Price Low threshold** (c/kWh): when set, `Wholesale Price Low` is on while the wholesale price is at or below it. It can be negative.
+- **Wholesale Price High threshold** (AUD/kWh): when set, `Wholesale Price High` is on while the wholesale price is at or above it.
+- **Wholesale Price Low threshold** (AUD/kWh): when set, `Wholesale Price Low` is on while the wholesale price is at or below it. It can be negative.
 
 Thresholds are wholesale prices, excluding GST. An empty field keeps the rule of "What you get". When both are set the low threshold must be less than the high one. A threshold you set also outranks the rule of the other switch, so the two are never on together. Saving reloads the entry: every entity is unavailable for a moment.
 
@@ -151,7 +151,7 @@ Do not configure step 4 without a solar production sensor: the dashboard would t
 - `Usage Cost` covers general usage and controlled load together and is attached to the general grid connection; the dashboard cannot split it per connection.
 - On a wholesale-linked plan `Usage Cost` is net of any wholesale-linked feed-in, and `Feed-in Credit` excludes it.
 - In South Australia a dashboard day runs from 00:30 to 00:30 local time, as for every statistic in a half-hour time zone.
-- **Never select `Current Rate`, `Wholesale Price` or any other sensor of this integration as a price entity in the Energy dashboard** (for example as the price of another meter's sensor). They are in c/kWh and the dashboard reads a price entity as dollars per kWh, so the cost would be 100 times too high; `Wholesale Price` is in addition not what you pay.
+- `Current Rate` can be the price entity of a meter sensor from another integration (for example a CT clamp or your inverter's grid sensor): **Use an entity with current price** → `Current Rate`. It is unknown while the rate is wholesale-linked, and it does not know when an allowance is used up. Do not use `Wholesale Price` as a price: it is not what you pay. The dashboard does not accept a price entity for the Flipped Energy statistics themselves; they bring their own cost.
 
 ## Apple Home
 
@@ -234,7 +234,7 @@ actions:
   - action: persistent_notification.create
     data:
       title: Wholesale Price High
-      message: "Wholesale price {{ states('sensor.flipped_energy_wholesale_price') }} c/kWh"
+      message: "Wholesale price {{ states('sensor.flipped_energy_wholesale_price') }} AUD/kWh"
 ```
 
 **A caution about allowances.** On a period with an allowance, for example "0 c for the first 24 kWh per day in this window, then 27.5 c", the integration shows the rate, `Rate Allowance` and `Rate After Allowance`, but it cannot tell when the allowance has been used: meter data arrives a day or more late. An automation that keeps loads running through the window pays `Rate After Allowance` for everything beyond the allowance while `Off-Peak Rate` is still on.
@@ -257,14 +257,14 @@ next_hour:
   from: "2026-10-01T02:30:00Z"
   to: "2026-10-01T03:30:00Z"
   published_at: "2026-10-01T02:30:00Z"
-  min_cents_per_kwh: 9.1
-  max_cents_per_kwh: 34.9
+  min_aud_per_kwh: 0.091
+  max_aud_per_kwh: 0.349
   level: elevated
   points:
     - start: "2026-10-01T02:30:00Z"
-      cents_per_kwh: 9.1
+      aud_per_kwh: 0.091
     - start: "2026-10-01T02:35:00Z"
-      cents_per_kwh: 9.8
+      aud_per_kwh: 0.098
 ahead: null
 ```
 

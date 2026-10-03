@@ -30,6 +30,7 @@ from .const import (
     USER_AGENT_PRODUCT,
     api_refused_issue_id,
     instance_key,
+    to_cents,
 )
 from .gate import GateRegistry
 from .price_loop import PriceLoopRegistry
@@ -118,8 +119,8 @@ def entry_settings(entry: ConfigEntry) -> Settings:
         token=entry.data[CONF_TOKEN],
         account_number=entry.data[CONF_ACCOUNT_NUMBER],
         nmi=entry.data.get(CONF_NMI),
-        price_high_threshold=None if high is None else float(high),
-        price_low_threshold=None if low is None else float(low),
+        price_high_threshold=None if high is None else to_cents(float(high)),
+        price_low_threshold=None if low is None else to_cents(float(low)),
     )
 
 

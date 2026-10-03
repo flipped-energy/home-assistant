@@ -58,9 +58,9 @@
         "description": "A threshold that is set replaces the price tier rule for Wholesale Price High or Wholesale Price Low. An empty field keeps the tier rule.",
         "data": {
           "virtualDevices": "Expose virtual switches",
-        "spotPrices": "Show spot prices (automatic when unset)",
-        "priceHighThresholdCentsPerKwh": "Wholesale Price High threshold",
-          "priceLowThresholdCentsPerKwh": "Wholesale Price Low threshold"
+          "spotPrices": "Show wholesale prices",
+          "priceHighThresholdAudPerKwh": "Wholesale Price High threshold",
+          "priceLowThresholdAudPerKwh": "Wholesale Price Low threshold"
         }
       }
     },

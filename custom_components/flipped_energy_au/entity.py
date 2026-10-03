@@ -92,7 +92,7 @@ class SpotLinkedEntities:
     @callback
     def update(self) -> None:
         tariff = self._entry.runtime_data.signals["tariff"]
-        configured = self._entry.options.get(CONF_SPOT_PRICES) if self._configurable else None
+        configured = self._entry.options.get(CONF_SPOT_PRICES, True) if self._configurable else None
         if configured is None and tariff["status"] != "ok":
             return
         if configured if configured is not None else tariff["spotLinked"]:

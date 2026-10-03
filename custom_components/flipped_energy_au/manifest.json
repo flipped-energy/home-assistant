@@ -2,7 +2,7 @@
   "domain": "flipped_energy_au",
   "name": "Flipped Energy",
   "codeowners": [
-    "@flippedenergy"
+    "@flipped-energy"
   ],
   "config_flow": true,
   "dependencies": [
@@ -12,5 +12,5 @@
   "integration_type": "service",
   "iot_class": "cloud_push",
   "issue_tracker": "https://github.com/flipped-energy/home-assistant/issues",
-  "version": "0.1.62"
+  "version": "0.1.72"
 }
