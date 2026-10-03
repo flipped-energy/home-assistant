@@ -9,12 +9,62 @@ Two things in this integration look alike and are not the same:
 - **Your rate** (`Peak Rate`, `Off-Peak Rate`, `Current Rate`, `Rate Period` and the other "Rate" entities) comes from your own plan. It is what you pay per kWh, including GST.
 - **Wholesale price** (every entity whose name starts with "Wholesale") is the price on the wholesale market in your region, every 5 minutes. It excludes GST, network charges, losses and retail margin. It is not what you pay. On a plan with fixed rates it does not change your bill; it tells you when the grid has cheap (often surplus solar) or expensive energy.
 
+**What it does not show:** how much power your home is using right now. Your meter sends its readings to Flipped a day or more later, so usage and cost start from yesterday (sometimes the day before) and the newest day fills in later. For live power you need your own device, such as a smart meter clamp or your solar inverter's integration.
+
+## Quick start
+
+From nothing to your Flipped usage and cost in Home Assistant. Every step happens in a web browser.
+
+### 1. Get Home Assistant
+
+If Home Assistant already runs at home, skip to step 2.
+
+- The simplest way is a **Home Assistant Green**: a small box that you plug into power and into your internet router. See https://www.home-assistant.io/green/.
+- Other options (a Raspberry Pi, a spare computer): https://www.home-assistant.io/installation/. Pick **Home Assistant OS**; the Flipped Energy app below needs it.
+
+On a phone or computer on the same Wi-Fi, open http://homeassistant.local:8123. The first start can show "Preparing Home Assistant" for up to 20 minutes. Then create your account and follow the setup screens.
+
+### 2. Create a Flipped token
+
+1. In the Flipped portal open **APIs and MCPs** and create a token.
+2. **Scope:** Read only. **Expires in:** 365 days.
+3. Copy the token. It starts with `fdk_`.
+
+### 3. Add the Flipped Energy app
+
+1. Open this link and enter `http://homeassistant.local:8123` if it asks for your Home Assistant address: https://my.home-assistant.io/redirect/supervisor_addon/?addon=eca84b97_flipped_energy&repository_url=https%3A%2F%2Fgithub.com%2Fflipped-energy%2Fhome-assistant
+   - Or by hand: **Settings** > **Apps** > **Install app** > menu (⋮) > **Repositories**, add `https://github.com/flipped-energy/home-assistant`, close, and choose **Flipped Energy** in the list.
+   - This is an app repository. HACS is not needed, and so is a GitHub account.
+2. Select **Install**.
+3. Open **Configuration**, paste your token into **Flipped token** and select **Save**.
+4. Back on **Info**, select **Start**.
+
+The app installs Flipped Energy, restarts Home Assistant (this takes a few minutes; the page reconnects by itself) and sets it up with your token. The app's **Log** tab shows each step; the last line is "Flipped Energy is set up with your token".
+
+Without a token in step 3, finish the setup yourself: **Settings** > **Devices & services** > **Add integration**, search for **Flipped Energy** and paste the token.
+
+### 4. Show usage and cost on the Energy dashboard
+
+1. **Settings** > **Dashboards** > **Energy** > **Add grid connection**.
+2. **Energy imported from grid:** **Flipped Energy Grid Import**.
+3. **Cost tracking:** **Use an entity tracking the total costs** > **Flipped Energy Usage Cost**.
+4. **Display name** shows a code; type a name such as `Flipped Energy` instead.
+5. Select **Save**. Open **Energy** in the sidebar.
+
+The dashboard shows yesterday and earlier; today stays empty until the meter data arrives. The cost is usage only, without the daily supply charge, so it is lower than your bill. With solar panels, see "Usage history in the Energy dashboard" below.
+
+### 5. Updates
+
+Leave the app running. A new version appears in **Settings** > **Updates**; select **Update**, and the app installs it and restarts Home Assistant.
+
 ## Requirements
 
 - Home Assistant 2026.9.4 or later.
 - A Flipped Energy account with **APIs and MCPs** turned on in the Flipped portal.
 
 ## Install
+
+**App (Home Assistant OS):** see "Quick start", steps 3 and 5.
 
 **HACS:** in HACS open the menu, choose **Custom repositories**, add `https://github.com/flipped-energy/home-assistant` with type **Integration**, then install **Flipped Energy** and restart Home Assistant.
 

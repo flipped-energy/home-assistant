@@ -1,5 +1,5 @@
 name: Flipped Energy
-version: "0.1.73"
+version: "0.1.74"
 slug: flipped_energy
 description: Installs Flipped Energy. Then add it in Settings > Devices & services, or paste your token in Configuration first.
 url: https://github.com/flipped-energy/home-assistant

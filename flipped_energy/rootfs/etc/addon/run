@@ -10,7 +10,7 @@ core() {
   curl -sS --fail-with-body -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" "$@"
 }
 
-if [ -d "$target" ] && diff -r "$source" "$target" > /dev/null; then
+if [ -d "$target" ] && diff -r -x __pycache__ "$source" "$target" > /dev/null; then
   bashio::log.info "Flipped Energy ${version} is installed"
 else
   mkdir -p /homeassistant/custom_components
