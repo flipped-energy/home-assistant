@@ -1,0 +1,6 @@
+configuration:
+  token:
+    name: Flipped token (optional)
+    description: >-
+      Paste a token from APIs and MCPs in the Flipped portal and Flipped Energy is set up for you.
+      Leave it empty to set it up yourself in Settings > Devices & services.
