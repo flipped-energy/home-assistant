@@ -1,0 +1,19 @@
+name: Flipped Energy
+version: "0.1.86"
+slug: flipped_energy
+description: Installs Flipped Energy. Then add it in Settings > Devices & services, or paste your token in Configuration first.
+url: https://github.com/flipped-energy/home-assistant
+arch:
+  - aarch64
+  - amd64
+init: false
+startup: application
+boot: auto
+hassio_api: true
+hassio_role: homeassistant
+homeassistant_api: true
+map:
+  - homeassistant_config:rw
+options: {}
+schema:
+  token: password?

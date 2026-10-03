@@ -1,0 +1,41 @@
+#!/usr/bin/with-contenv bashio
+# shellcheck shell=bash
+set -euo pipefail
+
+source=/integration/flipped_energy_au
+target=/homeassistant/custom_components/flipped_energy_au
+version=$(jq -r .version "$source/manifest.json")
+
+core() {
+  curl -sS --fail-with-body -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" -H "Content-Type: application/json" "$@"
+}
+
+if [ -d "$target" ] && diff -r -x __pycache__ "$source" "$target" > /dev/null; then
+  bashio::log.info "Flipped Energy ${version} is installed"
+else
+  mkdir -p /homeassistant/custom_components
+  rm -rf "$target"
+  cp -R "$source" "$target"
+  bashio::log.info "Installed Flipped Energy ${version}; restarting Home Assistant"
+  core -X POST http://supervisor/core/restart
+  bashio::log.info "Home Assistant restarted"
+fi
+
+entries=$(core http://supervisor/core/api/config/config_entries/entry?domain=flipped_energy_au)
+if [ "$(jq length <<< "$entries")" != "0" ]; then
+  bashio::log.info "Flipped Energy is set up"
+elif bashio::config.has_value 'token'; then
+  flow=$(core -X POST -d '{"handler":"flipped_energy_au"}' http://supervisor/core/api/config/config_entries/flow)
+  flow_id=$(jq -r .flow_id <<< "$flow")
+  result=$(jq -n --arg token "$(bashio::config 'token')" '{token: $token}' | core -X POST -d @- "http://supervisor/core/api/config/config_entries/flow/${flow_id}")
+  if [ "$(jq -r .type <<< "$result")" = "create_entry" ]; then
+    bashio::log.info "Flipped Energy is set up with your token"
+  else
+    bashio::log.warning "Flipped Energy was not set up with the token: ${result}"
+    bashio::log.warning "Finish in Settings > Devices & services > Add integration > Flipped Energy"
+  fi
+else
+  bashio::log.info "Next: Settings > Devices & services > Add integration > Flipped Energy, or paste your token in this app's Configuration and restart the app"
+fi
+
+exec sleep infinity
