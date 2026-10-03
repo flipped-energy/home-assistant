@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bashio
+# shellcheck shell=bash
+set -euo pipefail
+
+source=/integration/flipped_energy_au
+target=/homeassistant/custom_components/flipped_energy_au
+version=$(jq -r .version "$source/manifest.json")
+
+if [ -d "$target" ] && diff -r "$source" "$target" > /dev/null; then
+  bashio::log.info "Flipped Energy integration ${version} is installed"
+else
+  mkdir -p /homeassistant/custom_components
+  rm -rf "$target"
+  cp -R "$source" "$target"
+  bashio::log.info "Installed the Flipped Energy integration ${version}; restarting Home Assistant"
+  curl -sS --fail-with-body -X POST -H "Authorization: Bearer ${SUPERVISOR_TOKEN}" http://supervisor/core/restart
+fi
+
+exec sleep infinity

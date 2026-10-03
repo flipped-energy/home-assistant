@@ -1,0 +1,218 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Flipped Energy",
+        "description": "Enter a Flipped Energy developer token. It starts with `fdk_`. Use a Read token with the longest expiry.",
+        "data": {
+          "token": "Token"
+        }
+      },
+      "account": {
+        "title": "Account",
+        "description": "Choose the account this device serves.",
+        "data": {
+          "accountNumber": "Account"
+        }
+      },
+      "nmi": {
+        "title": "Meter",
+        "description": "Choose the meter whose usage history is read.",
+        "data": {
+          "nmi": "NMI"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Replace the token",
+        "description": "Enter a new Flipped Energy developer token. It starts with `fdk_`. Use a Read token with the longest expiry.",
+        "data": {
+          "token": "Token"
+        }
+      },
+      "reconfigure": {
+        "title": "Replace the token",
+        "description": "Enter a new Flipped Energy developer token. It starts with `fdk_`. Use a Read token with the longest expiry.",
+        "data": {
+          "token": "Token"
+        }
+      }
+    },
+    "error": {
+      "token_format": "The token must start with fdk_",
+      "http_error": "HTTP {status}: {body}",
+      "network_error": "{message}",
+      "invalid_response": "{message}",
+      "account_none": "This token can read no account that has an account number and a product",
+      "account_not_found": "Account {account} is not among the accounts this token can read: {accounts}"
+    },
+    "abort": {
+      "already_configured": "This account and meter are already configured",
+      "reauth_successful": "The token was replaced",
+      "reconfigure_successful": "The token was replaced"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Devices and prices",
+        "description": "A threshold that is set replaces the price tier rule for Wholesale Price High or Wholesale Price Low. An empty field keeps the tier rule.",
+        "data": {
+          "virtualDevices": "Expose virtual switches",
+          "spotPrices": "Show wholesale prices",
+          "priceHighThresholdAudPerKwh": "Wholesale Price High threshold",
+          "priceLowThresholdAudPerKwh": "Wholesale Price Low threshold"
+        }
+      }
+    },
+    "error": {
+      "threshold_order": "The low threshold must be less than the high threshold"
+    }
+  },
+  "entity": {
+    "switch": {
+      "peak_rate": {
+        "name": "Peak Rate"
+      },
+      "off_peak_rate": {
+        "name": "Off-Peak Rate"
+      },
+      "shoulder_rate": {
+        "name": "Shoulder Rate"
+      },
+      "wholesale_price_high": {
+        "name": "Wholesale Price High"
+      },
+      "wholesale_price_low": {
+        "name": "Wholesale Price Low"
+      }
+    },
+    "binary_sensor": {
+      "wholesale_price_negative": {
+        "name": "Wholesale Price Negative"
+      },
+      "rate_wholesale_linked": {
+        "name": "Wholesale-Linked Rate"
+      },
+      "token_expiring": {
+        "name": "Token Expiring Soon"
+      }
+    },
+    "sensor": {
+      "wholesale_price": {
+        "name": "Wholesale Price"
+      },
+      "wholesale_price_level": {
+        "name": "Wholesale Price Level",
+        "state": {
+          "unusually_low": "Unusually low",
+          "normal": "Normal",
+          "elevated": "Elevated",
+          "spike": "Spike"
+        }
+      },
+      "wholesale_price_forecast": {
+        "name": "Wholesale Price Forecast"
+      },
+      "current_rate": {
+        "name": "Current Rate"
+      },
+      "rate_period_allowance": {
+        "name": "Rate Allowance"
+      },
+      "rate_after_allowance": {
+        "name": "Rate After Allowance"
+      },
+      "rate_period": {
+        "name": "Rate Period",
+        "state": {
+          "peak": "Peak",
+          "shoulder": "Shoulder",
+          "off_peak": "Off-peak",
+          "anytime": "Anytime"
+        }
+      },
+      "rate_period_name": {
+        "name": "Rate Period Name"
+      },
+      "next_rate_change": {
+        "name": "Next Rate Change"
+      },
+      "fixed_rate_component": {
+        "name": "Fixed Rate Component"
+      },
+      "wholesale_rate_cap": {
+        "name": "Wholesale Rate Cap"
+      },
+      "account_status": {
+        "name": "Account Status"
+      },
+      "tariff_status": {
+        "name": "Rates Status"
+      },
+      "wholesale_price_status": {
+        "name": "Wholesale Price Status"
+      },
+      "usage_history_status": {
+        "name": "Usage History Status"
+      },
+      "usage_history_up_to": {
+        "name": "Usage History Up To"
+      },
+      "api_calls_remaining_today": {
+        "name": "API Calls Remaining Today"
+      }
+    }
+  },
+  "services": {
+    "get_wholesale_price_forecast": {
+      "name": "Get wholesale price forecast",
+      "description": "Returns the wholesale price forecast for the next hour and the period ahead.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Device",
+          "description": "The Flipped Energy entry to read."
+        }
+      }
+    },
+    "get_rate_schedule": {
+      "name": "Get rate schedule",
+      "description": "Returns the rate periods of the plan in effect.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Device",
+          "description": "The Flipped Energy entry to read."
+        }
+      }
+    },
+    "get_usage_history": {
+      "name": "Get usage history",
+      "description": "Returns the half-hourly and daily usage history of the last seven days.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Device",
+          "description": "The Flipped Energy entry to read."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "group_faulted_http": {
+      "message": "{group} group is faulted ({code}): HTTP {status}: {body}"
+    },
+    "group_faulted_message": {
+      "message": "{group} group is faulted ({code}): {message}"
+    },
+    "group_faulted": {
+      "message": "{group} group is faulted ({code})"
+    },
+    "read_only": {
+      "message": "{name} is a read-only signal and cannot be switched"
+    }
+  },
+  "issues": {
+    "api_refused": {
+      "title": "{name}: the Flipped Energy API answered HTTP {status}",
+      "description": "First seen {since}.\n\n```\n{body}\n```"
+    }
+  }
+}
